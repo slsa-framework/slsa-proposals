@@ -22,7 +22,7 @@ needed for all changes.
 1.  Find or create a relevant [GitHub Issue] in the main SLSA repo to discuss
     this idea.
 2.  Fork this repository and create a PR containing the new document:
-    *   Create `####/index.md` using [0001/README.md](0001/README.md) as a
+    *   Create `####/README.md` using [0001/README.md](0001/README.md) as a
         template:
         *   `####` is the proposal number; use the next available integer.
         *   Update metadata at the top:
@@ -48,8 +48,8 @@ needed for all changes.
 *   **DRAFT:** Still being refined and/or undergoing review. All proposals start
     in this state.
 *   **ACCEPTED:** Accepted as the plan of record but not yet implemented.
-*   **IMPLEMENTED:** Implemented and final. The doc should be point to the
-    implementation PRs.
+*   **IMPLEMENTED:** Implemented and final. The doc should be updated to point
+    to the implementation PRs in the Implementation metadata field.
 *   **REJECTED:** Will not be implemented. The doc should explain the decision.
 *   **ABANDONED:** Proposer has stopped work on the proposal, without an
     explicit approval or rejection decision. The doc should explain why it was
