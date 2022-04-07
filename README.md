@@ -11,8 +11,8 @@ should instead live in the [main SLSA repo].
 ## Proposal index
 
 Number                 | Title                        | [Status]
----------------------- | ---------------------------- | ---------
-[0001](0001/README.md) | Creation of proposal process | IN REVIEW
+---------------------- | ---------------------------- | -----------
+[0001](0001/README.md) | Creation of proposal process | IMPLEMENTED
 
 ## How to create a proposal document
 
