@@ -1,0 +1,209 @@
+# Proposal 2: Project roadmap, May 2022
+
+*   Proposer: [Mark Lodato](https://github.com/MarkLodato) (lodato@google.com)
+*   GitHub Issue: n/a
+*   Status: [DRAFT](../README.md#meaning-of-status-codes)
+*   Implementation: TODO
+
+## Abstract
+
+This document proposes long-term themes and short-term milestones for the SLSA
+project.
+
+## Implementation
+
+Once this proposal is accepted, we will track progress through GitHub Projects
+or Milestones.
+
+## Themes (long-term)
+
+The following open-ended themes encapsulate the main objectives of SLSA. They
+are expected to remain stable long-term.
+
+-   **Specification** is stable, practical, and useful for reducing risk—with a
+    healthy surrounding community.
+-   **Tooling**, services, and documentation make SLSA readily adoptable.
+-   **Adoption** of SLSA by open-source projects reduces security risk for
+    users.
+-   **Government and industry** widely accept SLSA as the *lingua franca* of
+    supply chain security.
+
+## Milestones (short-term)
+
+The following milestones are expected to be practical in the next few quarters.
+
+### Theme: Specification and community
+
+#### Milestone: SLSA specification has a stable 1.0 release
+
+Version 1.0 of the SLSA specification provides a stable foundation. This
+includes both the core [SLSA spec] and the recommended attestation format suite:
+[DSSE], [attestation], and [provenance].
+
+For the spec, we intend to:
+
+-   Pare SLSA v1.0 down to only cover build integrity, which is SLSA's core
+    strength. This makes SLSA practical by removing the requirements that cannot
+    be implemented today, notably the controversial two-party review requirement
+    and the undefined "common" requirements.
+
+-   Establish a convention for extending SLSA beyond build integrity, such as to
+    vulnerability management or source integrity. This might be through multiple
+    independent ladders, or a single ladder, or something else entirely. Note:
+    this is just about establishing the convention; actually extending SLSA is
+    out of scope for v1.0.
+
+-   Incorporate the concept of policy or verification into the specification,
+    which is necessary to realize the security guarantees of the levels.
+
+-   Address known clarity issues in v0.1, including updated terminology.
+
+For the formats, requirements for v1.0 are still TBD.
+
+[attestation]: https://github.com/in-toto/attestation
+[dsse]: https://github.com/secure-systems-lab/dsse
+[provenance]: https://slsa.dev/provenance
+[slsa spec]: https://slsa.dev/spec
+
+#### Milestone: SLSA community is healthy according to some agreed-upon definition
+
+The SLSA project has an agreed-upon definition of community health, with regular
+measurements and a plan to improve it over time. This likely includes the number
+of contributors and the lack of barriers for new contributions. Ideally there
+should be a clear path for potential contributors to jump in and start helping
+with SLSA.
+
+### Theme: Tooling
+
+The long-term goal is to make it practical for any software producer to adopt
+SLSA. This means that the producer can build in a SLSA-compliant manner using
+commonly available tools, that provenance gets distributed in a standard way,
+and that the SLSA properties are verified automatically before the software is
+delivered to the consumer.
+
+In the short term, we focus on open-source packaging ecosystems, tentatively
+starting with Python. Open-source is a more tractable problem than closed-source
+and serves as a good model by its open nature. We expect equivalent solutions
+for closed-source in the future.
+
+#### Milestone: SLSA 2-3 builds are possible for arbitrary open-source packages using several common build services
+
+Producers of arbitrary open-source software artifacts have practical tools and
+instructions to reach SLSA 2 or 3 using several different, commonly available
+build services. The goal is to make it possible to reach SLSA 2 or 3 without
+requiring major changes to existing build services, even if the user experience
+is not smooth enough for broad adoption. This may involve building a layer on
+top of an existing service that adds SLSA features. With this milestone,
+provenance is only generated without a standard way to distribute it.
+
+We plan to publish [Sigstore]-based solutions for build services that already
+provide OpenID Connect (OIDC) tokens. Sigstore is not required for SLSA, but it
+is attractive because it seamlessly integrates with OIDC. The benefit of this
+approach is that it allows us to add SLSA without requiring upstream changes to
+the build service, at the cost of increasing the size of the trusted computing
+base and possibly worse user experience than if the builder had provided SLSA
+directly. This allows motivated software producers to achieve SLSA immediately.
+Planned Sigstore-based solutions include:
+
+-   [GitHub Actions](https://github.com/features/actions)
+    ([slsa-github-generator](https://github.com/slsa-framework/slsa-github-generator))
+-   [GitLab CI/CD](https://about.gitlab.com/topics/ci-cd/)
+
+Also, we will provide clear documentation on [slsa.dev](https://slsa.dev) to
+guide software producers on how to use these solutions.
+
+[sigstore]: https://sigstore.dev
+
+#### Milestone: SLSA 4 builds are possible for specific packaging ecosystems
+
+Producers of specific ecosystem packages have practical, ecosystem-specific
+tools and instructions to reach SLSA 4. Similar to above, the goal is to make
+this possible but might not be smooth enough for broad adoption. A per-ecosystem
+solution is likely necessary for several reasons: to achieve hermeticity for
+SLSA 4, to generate a quality SBOM, to provide a better UX, and to make it
+possible to rebuild on other platforms.
+
+Work includes:
+
+*   Proof-of-concept SLSA extensions to the Sigstore-based solutions above to
+    reach SLSA 4 for specific languages (go, Python, etc.) These will hopefully
+    prove ideas and provide more data, but we do not expect to support these
+    long term.
+*   Proposal for how to generalize and scale ecosystem-specific solutions to
+    achieve SLSA 4 and generate high quality SBOMs that can be maintained by
+    each community independently, without risk of accidentally breaking SLSA
+    guarantees.
+
+#### Milestone: Provenance distribution model is decided, with at least one representative implementation (Python and/or NPM)
+
+Consumers have a standard mechanism for finding and retrieving provenance of the
+packages they use within each packaging ecosystem. The tentative plan is to
+distribute provenance in-band next to the artifact, plus have an out-of-band
+mechanism for prototyping and supporting attestations from parties other than
+the producer. This work also includes aligning with SBOM, since the requirements
+are very similar. With this milestone, motivated consumers can act upon the
+provenance themselves.
+
+Issue: [#269](https://github.com/slsa-framework/slsa/issues/269)
+
+#### Milestone: SLSA policy model is decided, to detect or prevent publishing of packages containing unauthorized changes, with at least one representative implementation (Python and/or NPM)
+
+SLSA policies detect or prevent unauthorized changes for packages within the
+ecosystem. When opted-in, package maintainers must upload provenance alongside
+the package proving that the package was built directly from the canonical
+source repository. At first this may just display results on a dashboard,
+similar to [pyreadiness.org](https://pyreadiness.org/3.10/), but will hopefully
+be integrated directly into PyPI/NPM eventually. With this milestone, software
+producers can opt-in to automatically protect themselves against insider risk,
+and software consumers can gain assurance for opted-in packages, but the package
+registry is still trusted.
+
+Sub-problems:
+
+-   Policy model, which securely maps package name to canonical source
+    repository. For example, [requests](https://pypi.org/project/requests/) maps
+    to https://github.com/psf/requests. This metadata already exists for some
+    packages, but (a) it is not structured and (b) package maintainers can
+    mutate it at will. The solution must protect against malicious changes while
+    silently allowing official changes in source repository. One idea is to have
+    a Trust On First Use (TOFU) model with a mechanism for source repo
+    migrations.
+
+-   Implementation for each specific ecosystem, starting with Python/PyPI. This
+    includes a design, prototype, dashboard, and/or upload-time integration.
+
+-   (optional) Toy implementation of a mock package registry ("SLSA Playground")
+    to develop ideas and to show how SLSA would work in practice, without having
+    to change any existing system or to release any real package. This can also
+    be used as examples for https://slsa.dev/threats.
+
+#### Milestone: Client-side verification of SLSA policies in the Python ecosystem removes the need to trust the package registry
+
+SLSA verification happens in client tools that fetch Python packages, reducing
+or removing the need to trust the package registry (e.g. PyPI). This has a
+substantial reliability risk, so it is expected to come much later. Even in this
+model, the package registry enforces SLSA at upload time to prevent a maintainer
+from accidentally releasing a version that no one can use.
+
+This probably won't happen in 2022, but we list it here for completeness.
+
+### Theme: Adoption
+
+Widescale adoption of SLSA across open-source is the long-term goal, but it is
+not practical in 2022 because it not only depends on the work above, but also
+work to minimize or eliminate any friction for project maintainers.
+
+In the short term, we hope to have targeted adoption of key open-source projects
+to both exemplify standards and to reduce risk for those projects.
+
+### Theme: Government and industry
+
+#### Milestone: SLSA's relationship to government standards is clear
+
+The community and readers understand how SLSA fits into various government
+standards, such as SSDF, SBOM, etc. Exactly which government standards is TBD.
+
+-   Relationship between SLSA and SBOM decided and clearly documented, including
+    future plans for tooling.
+-   Alignment between SLSA and SSDF is clearly documented through a compelling
+    story of synergy.
