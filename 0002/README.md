@@ -1,6 +1,6 @@
 # Proposal 2: Project roadmap, May 2022
 
-*   Proposer: [Mark Lodato](https://github.com/MarkLodato) (lodato@google.com)
+*   Proposer: [Mark Lodato][@MarkLodato] (lodato@google.com)
 *   GitHub Issue: n/a
 *   Status: [DRAFT](../README.md#meaning-of-status-codes)
 *   Implementation: TODO
@@ -31,16 +31,21 @@ are expected to remain stable long-term.
 ## Milestones (short-term)
 
 The following milestones are expected to be practical in the next few quarters.
+Each item or sub-item has a priority and a main point of contact.
+
+Priorities are to be interpreted as follows:
+
+-   P0: High confidence it will happen mid-2022
+-   P1: Expected mid-2022 but may slip
+-   P2: Planned for 2022 but may slip or get de-prioritized
+-   P3: Side project, moderate risk of de-prioritization
 
 ### Theme: Specification and community
 
-#### Milestone: SLSA specification has a stable 1.0 release
+#### Milestone: SLSA specification has a stable 1.0 release ([@MarkLodato], P1)
 
-Version 1.0 of the SLSA specification provides a stable foundation. This
-includes both the core [SLSA spec] and the recommended attestation format suite:
-[DSSE], [attestation], and [provenance].
-
-For the spec, we intend to:
+Version 1.0 of the [SLSA specification](https://slsa.dev/spec) provides a stable
+foundation. Plans:
 
 -   Pare SLSA v1.0 down to only cover build integrity, which is SLSA's core
     strength. This makes SLSA practical by removing the requirements that cannot
@@ -50,22 +55,25 @@ For the spec, we intend to:
 -   Establish a convention for extending SLSA beyond build integrity, such as to
     vulnerability management or source integrity. This might be through multiple
     independent ladders, or a single ladder, or something else entirely. Note:
-    this is just about establishing the convention; actually extending SLSA is
-    out of scope for v1.0.
+    we will validate the framework through at least one draft extension, but
+    finalizing the first extension is not required for v1.0.
 
 -   Incorporate the concept of policy or verification into the specification,
     which is necessary to realize the security guarantees of the levels.
 
 -   Address known clarity issues in v0.1, including updated terminology.
 
-For the formats, requirements for v1.0 are still TBD.
+#### Milestone: Recommended SLSA provenance format has stable 1.0 release ([@MarkLodato], P2)
+
+This includes all three layers in the suite: [DSSE], [attestation], and
+[provenance]. DSSE is already 1.0, but attestation and provenance are not.
+Requirements for v1.0 are still TBD.
 
 [attestation]: https://github.com/in-toto/attestation
 [dsse]: https://github.com/secure-systems-lab/dsse
 [provenance]: https://slsa.dev/provenance
-[slsa spec]: https://slsa.dev/spec
 
-#### Milestone: SLSA community is healthy according to some agreed-upon definition
+#### Milestone: SLSA community is healthy according to some agreed-upon definition ([@hepwori], P2)
 
 The SLSA project has an agreed-upon definition of community health, with regular
 measurements and a plan to improve it over time. This likely includes the number
@@ -105,12 +113,13 @@ base and possibly worse user experience than if the builder had provided SLSA
 directly. This allows motivated software producers to achieve SLSA immediately.
 Planned Sigstore-based solutions include:
 
--   [GitHub Actions](https://github.com/features/actions)
-    ([slsa-github-generator](https://github.com/slsa-framework/slsa-github-generator))
--   [GitLab CI/CD](https://about.gitlab.com/topics/ci-cd/)
+-   [GitHub Actions](https://github.com/features/actions) -
+    [slsa-github-generator](https://github.com/slsa-framework/slsa-github-generator)
+    ([@laurentsimon], P0)
+-   [GitLab CI/CD](https://about.gitlab.com/topics/ci-cd/) ([@bobcallaway], P2)
 
 Also, we will provide clear documentation on [slsa.dev](https://slsa.dev) to
-guide software producers on how to use these solutions.
+guide software producers on how to use these solutions. ([@hepwori], P2)
 
 [sigstore]: https://sigstore.dev
 
@@ -128,13 +137,13 @@ Work includes:
 *   Proof-of-concept SLSA extensions to the Sigstore-based solutions above to
     reach SLSA 4 for specific languages (go, Python, etc.) These will hopefully
     prove ideas and provide more data, but we do not expect to support these
-    long term.
+    long term. ([@laurentsimon], P1)
 *   Proposal for how to generalize and scale ecosystem-specific solutions to
     achieve SLSA 4 and generate high quality SBOMs that can be maintained by
     each community independently, without risk of accidentally breaking SLSA
-    guarantees.
+    guarantees. ([@laurentsimon], P2)
 
-#### Milestone: Provenance distribution model is decided, with at least one representative implementation (Python and/or NPM)
+#### Milestone: Provenance distribution model is decided, with at least one representative implementation (tentatively Python)
 
 Consumers have a standard mechanism for finding and retrieving provenance of the
 packages they use within each packaging ecosystem. The tentative plan is to
@@ -144,19 +153,23 @@ the producer. This work also includes aligning with SBOM, since the requirements
 are very similar. With this milestone, motivated consumers can act upon the
 provenance themselves.
 
+Design is P1 for [@lumjjb] in Q2.
+
 Issue: [#269](https://github.com/slsa-framework/slsa/issues/269)
 
-#### Milestone: SLSA policy model is decided, to detect or prevent publishing of packages containing unauthorized changes, with at least one representative implementation (Python and/or NPM)
+#### Milestone: SLSA policy model is decided, to detect or prevent publishing of packages containing unauthorized changes, with at least one representative implementation (tentatively Python)
 
 SLSA policies detect or prevent unauthorized changes for packages within the
 ecosystem. When opted-in, package maintainers must upload provenance alongside
 the package proving that the package was built directly from the canonical
 source repository. At first this may just display results on a dashboard,
 similar to [pyreadiness.org](https://pyreadiness.org/3.10/), but will hopefully
-be integrated directly into PyPI/NPM eventually. With this milestone, software
+be integrated directly into PyPI eventually. With this milestone, software
 producers can opt-in to automatically protect themselves against insider risk,
 and software consumers can gain assurance for opted-in packages, but the package
 registry is still trusted.
+
+Design is P1 for [@var-sdk] and [@wietse-gmail] in Q2.
 
 Sub-problems:
 
@@ -175,9 +188,9 @@ Sub-problems:
 -   (optional) Toy implementation of a mock package registry ("SLSA Playground")
     to develop ideas and to show how SLSA would work in practice, without having
     to change any existing system or to release any real package. This can also
-    be used as examples for https://slsa.dev/threats.
+    be used as examples for https://slsa.dev/threats. (P3)
 
-#### Milestone: Client-side verification of SLSA policies in the Python ecosystem removes the need to trust the package registry
+#### Milestone: Client-side verification of SLSA policies in the Python ecosystem removes the need to trust the package registry (P3)
 
 SLSA verification happens in client tools that fetch Python packages, reducing
 or removing the need to trust the package registry (e.g. PyPI). This has a
@@ -204,6 +217,16 @@ The community and readers understand how SLSA fits into various government
 standards, such as SSDF, SBOM, etc. Exactly which government standards is TBD.
 
 -   Relationship between SLSA and SBOM decided and clearly documented, including
-    future plans for tooling.
+    future plans for tooling. ([@lumjjb], P0)
 -   Alignment between SLSA and SSDF is clearly documented through a compelling
-    story of synergy.
+    story of synergy. ([@hepwori], P2)
+
+<!-- Footnotes and links -->
+
+[@MarkLodato]: https://github.com/MarkLodato
+[@bobcallaway]: https://github.com/bobcallaway
+[@hepwori]: https://github.com/hepwori
+[@laurentsimon]: https://github.com/laurentsimon
+[@lumjjb]: https://github.com/lumjjb
+[@var-sdk]: https://github.com/var-sdk
+[@wietse-gmail]: https://github.com/wietse-gmail
