@@ -10,6 +10,9 @@
 This document proposes long-term themes and short-term milestones for the SLSA
 project.
 
+> NOTE TO READER: If you know of committed projects that should be added to this
+> roadmap, please send a pull request or file an issue in this repo.
+
 ## Implementation
 
 Once this proposal is accepted, we will track progress through GitHub Projects
@@ -61,7 +64,10 @@ foundation. Plans:
 -   Incorporate the concept of policy or verification into the specification,
     which is necessary to realize the security guarantees of the levels.
 
--   Address known clarity issues in v0.1, including updated terminology.
+-   Address known clarity issues from v0.1, including improved terminology
+    ([#306](https://github.com/slsa-framework/slsa/issues/306)), platform vs.
+    project requirements
+    ([#188](https://github.com/slsa-framework/slsa/issues/188)), and others.
 
 #### Milestone: Recommended SLSA provenance format has stable 1.0 release ([@MarkLodato], P2)
 
@@ -90,9 +96,9 @@ and that the SLSA properties are verified automatically before the software is
 delivered to the consumer.
 
 In the short term, we focus on open-source packaging ecosystems, tentatively
-starting with Python. Open-source is a more tractable problem than closed-source
-and serves as a good model by its open nature. We expect equivalent solutions
-for closed-source in the future.
+starting with Python.[^python-buy-in] Open-source is a more tractable problem
+than closed-source and serves as a good model by its open nature. We expect
+equivalent solutions for closed-source in the future.
 
 #### Milestone: SLSA 2-3 builds are possible for arbitrary open-source packages using several common build services
 
@@ -153,7 +159,10 @@ the producer. This work also includes aligning with SBOM, since the requirements
 are very similar. With this milestone, motivated consumers can act upon the
 provenance themselves.
 
-Design is P1 for [@lumjjb] in Q2.
+*   Q2: Design complete and approved within SLSA community ([@lumjjb], P1)
+*   Q3: Prototype implementation without requiring changes to PyPI
+*   Q4+: Python Enhancement Proposal (PEP) process, followed by implementation
+    if needed
 
 Issue: [#269](https://github.com/slsa-framework/slsa/issues/269)
 
@@ -183,12 +192,14 @@ Sub-problems:
     migrations.
 
 -   Implementation for each specific ecosystem, starting with Python/PyPI. This
-    includes a design, prototype, dashboard, and/or upload-time integration.
+    includes a design, prototype, dashboard, Python community outreach, PEP
+    authoring and approval, and/or upload-time integration.
 
--   (optional) Toy implementation of a mock package registry ("SLSA Playground")
-    to develop ideas and to show how SLSA would work in practice, without having
-    to change any existing system or to release any real package. This can also
-    be used as examples for https://slsa.dev/threats. (P3)
+-   (optional) Toy implementation of a
+    [mock package registry](https://github.com/jku/repository-playground) to
+    show how SLSA works in practice, without having to change any existing
+    system or to release any real package. This can also be used as examples for
+    https://slsa.dev/threats. (P3)
 
 #### Milestone: Client-side verification of SLSA policies in the Python ecosystem removes the need to trust the package registry (P3)
 
@@ -206,8 +217,13 @@ Widescale adoption of SLSA across open-source is the long-term goal, but it is
 not practical in 2022 because it not only depends on the work above, but also
 work to minimize or eliminate any friction for project maintainers.
 
+#### Milestone: Early adoption by key projects raises awareness of SLSA (P2)
+
 In the short term, we hope to have targeted adoption of key open-source projects
-to both exemplify standards and to reduce risk for those projects.
+to both exemplify standards and to reduce risk for those projects. We can also
+publish adoption stories to inform readers where SLSA is being applied. Finally,
+we can reach out to open-source communities, working groups, conferences, etc.
+to raise awareness of SLSA.
 
 ### Theme: Government and industry
 
@@ -221,7 +237,16 @@ standards, such as SSDF, SBOM, etc. Exactly which government standards is TBD.
 -   Alignment between SLSA and SSDF is clearly documented through a compelling
     story of synergy. ([@hepwori], P2)
 
-<!-- Footnotes and links -->
+## Footnotes
+
+[^python-buy-in]: We plan to reach out to the Python community to get buy-in and
+    go through the official Python Enhancement Proposal (PEP)
+    process. At the time of writing (May 2022), this has not yet
+    started so any reference to Python or PyPI in this document
+    should be considered a placeholder in case we choose a
+    different ecosystem down the road.
+
+<!-- Link definitions -->
 
 [@MarkLodato]: https://github.com/MarkLodato
 [@bobcallaway]: https://github.com/bobcallaway
