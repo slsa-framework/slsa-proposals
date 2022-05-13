@@ -122,7 +122,9 @@ Planned Sigstore-based solutions include:
 -   [GitHub Actions](https://github.com/features/actions) -
     [slsa-github-generator](https://github.com/slsa-framework/slsa-github-generator)
     ([@laurentsimon], P0)
--   [GitLab CI/CD](https://about.gitlab.com/topics/ci-cd/) ([@bobcallaway], P2)
+-   [GitLab CI/CD](https://about.gitlab.com/topics/ci-cd/) -
+    [issues/28940](https://gitlab.com/gitlab-org/gitlab-runner/-/issues/28940)
+    ([@bobcallaway], [@samwhite-gl], P2)
 
 Also, we will provide clear documentation on [slsa.dev](https://slsa.dev) to
 guide software producers on how to use these solutions. ([@hepwori], P2)
@@ -253,5 +255,6 @@ standards, such as SSDF, SBOM, etc. Exactly which government standards is TBD.
 [@hepwori]: https://github.com/hepwori
 [@laurentsimon]: https://github.com/laurentsimon
 [@lumjjb]: https://github.com/lumjjb
+[@samwhite-gl]: https://github.com/samwhite-gl
 [@var-sdk]: https://github.com/var-sdk
 [@wietse-gmail]: https://github.com/wietse-gmail
