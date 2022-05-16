@@ -13,6 +13,7 @@ should instead live in the [main SLSA repo].
 Number                 | Title                        | [Status]
 ---------------------- | ---------------------------- | -----------
 [0001](0001/README.md) | Creation of proposal process | IMPLEMENTED
+[0002](0002/README.md) | Project roadmap, May 2022    | DRAFT
 
 ## How to create a proposal document
 
