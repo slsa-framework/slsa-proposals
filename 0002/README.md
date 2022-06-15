@@ -2,7 +2,7 @@
 
 *   Proposer: [Mark Lodato][@MarkLodato] (lodato@google.com)
 *   GitHub Issue: [#384](https://github.com/slsa-framework/slsa/issues/384)
-*   Status: [DRAFT](../README.md#meaning-of-status-codes)
+*   Status: [ACCEPTED](../README.md#meaning-of-status-codes)
 *   Implementation: TODO
 
 ## Abstract
