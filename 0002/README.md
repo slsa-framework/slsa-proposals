@@ -64,6 +64,16 @@ foundation. Plans:
 -   Incorporate the concept of policy or verification into the specification,
     which is necessary to realize the security guarantees of the levels.
 
+    Policy here means something for which reviewable evidence that can be
+    automatically mirrored is provided for any human to review.
+    Verification, which we favor, means one which anyone can run a machine
+    that will do that by itself (e.g. we'll make verified reproducible builds
+    required in the highest level).
+    We will try to avoid it but some policy might be indirect, meaning a
+    requirement on the policy for contribution to the source.
+    Only in lower levels will these categories be relaxed by trading in
+    verifiability in favor of easy security gains.
+
 -   Address known clarity issues from v0.1, including improved terminology
     ([#306](https://github.com/slsa-framework/slsa/issues/306)), platform vs.
     project requirements
