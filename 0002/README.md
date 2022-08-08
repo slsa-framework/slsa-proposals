@@ -39,7 +39,7 @@ Each item or sub-item has a priority and a main point of contact.
 Priorities are to be interpreted as follows:
 
 -   P0: High confidence it will happen mid-2022
--   P1: Expected mid-2022 but may slip
+-   P1: Expected by end of 2022
 -   P2: Planned for 2022 but may slip or get de-prioritized
 -   P3: Side project, moderate risk of de-prioritization
 
@@ -50,10 +50,11 @@ Priorities are to be interpreted as follows:
 Version 1.0 of the [SLSA specification](https://slsa.dev/spec) provides a stable
 foundation. Plans:
 
--   Pare SLSA v1.0 down to only cover build integrity, which is SLSA's core
-    strength. This makes SLSA practical by removing the requirements that cannot
-    be implemented today, notably the controversial two-party review requirement
-    and the undefined "common" requirements.
+-   Pare SLSA v1.0 down to only the levels and requirements that are generally
+    agreed upon and practical to implement, leaving others for future extension.
+    In particular, v1.0 will tentatively only define SLSA 1-3 at first, marking
+    SLSA 4 as "draft" while the community reworks the two-party review and
+    hermeticity requirements.
 
 -   Establish a convention for extending SLSA beyond build integrity, such as to
     vulnerability management or source integrity. This might be through multiple
@@ -61,8 +62,10 @@ foundation. Plans:
     we will validate the framework through at least one draft extension, but
     finalizing the first extension is not required for v1.0.
 
--   Incorporate the concept of policy or verification into the specification,
-    which is necessary to realize the security guarantees of the levels.
+-   Incorporate the concept of "policy" into the specification, whereby
+    downstream systems only accept artifacts whose provenance matches some
+    expected patterns. This is necessary to realize the security guarantees of
+    the levels.
 
 -   Address known clarity issues from v0.1, including improved terminology
     ([#306](https://github.com/slsa-framework/slsa/issues/306)), platform vs.
@@ -78,14 +81,6 @@ Requirements for v1.0 are still TBD.
 [attestation]: https://github.com/in-toto/attestation
 [dsse]: https://github.com/secure-systems-lab/dsse
 [provenance]: https://slsa.dev/provenance
-
-#### Milestone: SLSA community is healthy according to some agreed-upon definition ([@hepwori], P2)
-
-The SLSA project has an agreed-upon definition of community health, with regular
-measurements and a plan to improve it over time. This likely includes the number
-of contributors and the lack of barriers for new contributions. Ideally there
-should be a clear path for potential contributors to jump in and start helping
-with SLSA.
 
 ### Theme: Tooling
 
@@ -196,12 +191,6 @@ Sub-problems:
 -   Implementation for each specific ecosystem, starting with Python/PyPI. This
     includes a design, prototype, dashboard, Python community outreach, PEP
     authoring and approval, and/or upload-time integration.
-
--   (optional) Toy implementation of a
-    [mock package registry](https://github.com/jku/repository-playground) to
-    show how SLSA works in practice, without having to change any existing
-    system or to release any real package. This can also be used as examples for
-    https://slsa.dev/threats. (P3)
 
 #### Milestone: Client-side verification of SLSA policies in the Python ecosystem removes the need to trust the package registry (P3)
 
