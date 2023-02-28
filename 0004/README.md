@@ -46,13 +46,13 @@ Appendix.
 
 ![Extended model](extended-model.svg)
 
-The figure shows a generic supply chain for software packages, from source code
-to installation, extended with two SLSA provenance policy enforcement points:
+The figure shows a generic supply chain for software packages, from source repository
+to installation, extended with two SLSA provenance policy evaluation points:
 
 -  When a software package is published to a package registry.
 -  When a software package is installed from a package registry.
 
-A SLSA policy contains expectations for provenance, as discussed in later
+A SLSA provenance policy contains expectations for provenance, as discussed in later
 sections.
 
 SLSA Provenance expectations may be evaluated at other points inside or outside
@@ -73,7 +73,7 @@ version:
     identity. The key could be long-lived, rotated regularly, or ephemeral, and
     the identity could be a builder, individual, or organization.
 -  The provenance contains claims that:
-    -  Together they satisfy the requirements for SLSA level X.
+    -  Combined together satisfy the requirements for SLSA level X.
         -  A policy evaluator may limit the maximum SLSA level
             depending on the builder identity or other context. 
 
