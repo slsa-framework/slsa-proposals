@@ -5,14 +5,6 @@
 *   Status: [DRAFT](../README.md#meaning-of-status-codes)
 *   Original link: [Google docs](https://docs.google.com/document/d/1ulft22Nv6OXFeVRIrVfH2bK4QcRyvv0RwDt2dhJltK4/edit?usp=sharing) (see there for reviewer comments and rejected ideas)
 
-| **Reviewer**                                 | **Status**  | **Timestamp**  |
-| -------------------------------------------- | ----------- | -------------- |
-| Mark Lodato (Google)                         | LGTM        | Jan 26, 2023   |
-| Michael Lieberman (Kusari)                   |             |                |
-| Fredrik Skogman (GitHub)                     | LGTM        | Feb 13, 2023   |
-| Joshua Lock (VMware)                         | LGTM        | Jan 31, 2023   |
-| Philip Harrison (GitHub/NPM)                 |             |                |
-
 ## Summary
 
 This document proposes an architecture for policy evaluation over SLSA
@@ -402,7 +394,7 @@ that it can block the installation of a non-compliant package.
 -  [https://blog.shalvah.me/posts/understanding-lock files](https://blog.shalvah.me/posts/understanding-lockfiles)
     covers lock files in php, jode.js (with npm and yarn), and in go and ruby.
 -  [https://pypi.org/project/pipfile/0.0.2/](https://pypi.org/project/pipfile/0.0.2/)
-    covers lock files in Python.
+    covers lock files for Python but is not yet official.
 -  [https://classic.yarnpkg.com/lang/en/docs/yarn-lock/](https://classic.yarnpkg.com/lang/en/docs/yarn-lock/)
     covers lock files in Yarn (alternative Node.js package manager).
 
