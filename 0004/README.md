@@ -183,7 +183,6 @@ Each npm package contains:
 
 ## Implementing provenance expectations 
 
-[this section is still evolving]  
 There are multiple ways to implement expectations for provenance properties that
 are not expected to change (including properties that are inferred from
 provenance): do we remember ‘good' property values, or do we remember ‘good'
