@@ -77,11 +77,12 @@ version:
 When enforced, these expectations will ensure that a compromise of a package
 registry upload credential (or a compromise of the registry itself) cannot
 result in the installation of a rogue ‘foo' package version that was built from
-an unexpected repository or on an unexpected builder. 
+an unexpected repository or with an unexpected builder. 
 
 If a ‘good' package version does not meet policy expectations, the expectations
 need to be updated for that package version and onwards, so that earlier package
-versions will continue to pass expectations.
+versions will continue to pass expectations (differnt dependencies may require
+different versions of a package).
 
 These expectations cannot detect 'upstream' compromises, for example the
 corruption of a build system, the exposure of a signing key, or a malicious
@@ -188,14 +189,14 @@ are not expected to change (including properties that are inferred from
 provenance): do we remember ‘good' property values, or do we remember ‘good'
 provenance? The difference is subtle.
 
-#### Alternative 1: Expected provenance values 
+#### Alternative 1: Remember expected provenance values 
 
 With this alternative, the policy evaluator will compare selected properties of
 a package's SLSA provenance against the expected property values for that
 package. When a ‘good' package's provenance causes an unexpected difference,
 update the expected values.
 
-#### Alternative 2: Expected provenance instances
+#### Alternative 2: Remember expected provenance instances
 
 Here, the policy evaluator will compare selected properties of a package's SLSA
 provenance against property values in past ‘good' provenance. When a ‘good'
@@ -226,8 +227,8 @@ solution is to qualify expectations for a package with a version range.
     -  The content of a ‘good' provenance instance. 
 
 I am inclined to prefer alternative 1, because it is more explicit about what
-provenance will or will not be compliant, which makes expectations easier to
-review.
+provenance will or will not be compliant. Alternative 2 may be preferable if
+only information about the last package version needs to be remembered.
 
 ## Bootstrapping policy support
 
@@ -350,7 +351,7 @@ We summarize those commonalities here. For details see the Appendix.
 
 #### Existing process
 
--  The "npm install" and "npm install <package>" commands install packages
+-  The commands "npm install" and "npm install \<package\>" install packages
     and transitive dependencies under the directory tree ./node_modules. They
     update a lock file (./package-lock.json) that enumerates each installed
     package (including packages that were already installed). 
@@ -392,7 +393,7 @@ that it can block the installation of a non-compliant package.
 #### Lock file-based package management systems
 
 -  [https://blog.shalvah.me/posts/understanding-lock files](https://blog.shalvah.me/posts/understanding-lockfiles)
-    covers lock files in php, jode.js (with npm and yarn), and in go and ruby.
+    covers lock files in php, node.js (with npm and yarn), and in go and ruby.
 -  [https://pypi.org/project/pipfile/0.0.2/](https://pypi.org/project/pipfile/0.0.2/)
     covers lock files for Python but is not yet official.
 -  [https://classic.yarnpkg.com/lang/en/docs/yarn-lock/](https://classic.yarnpkg.com/lang/en/docs/yarn-lock/)
@@ -442,9 +443,9 @@ that it can block the installation of a non-compliant package.
 
 #### Existing processes, high-level
 
--  A developer runs "npm install <package>" in an application or library
+-  A developer runs "npm install \<package\>" in an application or library
     top-level directory, to add a new dependency to their code.
--  An end user runs "npm install <package>" in a private directory to make
+-  An end user runs "npm install \<package\>" in a private directory to make
     an application's executable files ("binaries") available in that user's
     command search PATH.
 
@@ -483,7 +484,7 @@ Description of the existing processes:
 
 #####  Existing process
 
--  The command "npm install -g <package>" installs an application under a
+-  The command "npm install -g \<package\>" installs an application under a
     system directory so that its executable files ("binaries") become available
     to all users of that system.
 
