@@ -2,7 +2,7 @@
 
 *   Proposer: Wietse Venema ([wietse@gmail.com](mailto:wietse@gmail.com))
 *   GitHub Issue: TODO
-*   Status: TODO
+*   Status: [DRAFT](../README.md#meaning-of-status-codes)
 *   Original link: [Google docs](https://docs.google.com/document/d/1ulft22Nv6OXFeVRIrVfH2bK4QcRyvv0RwDt2dhJltK4/edit?usp=sharing) (see there for reviewer comments and rejected ideas)
 
 | **Reviewer**                                 | **Status**  | **Timestamp**  |
