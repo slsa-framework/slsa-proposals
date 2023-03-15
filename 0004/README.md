@@ -235,7 +235,7 @@ only information about the last package version needs to be remembered.
 
 To overcome a bootstrapping problem, we assume that compromises will be rare,
 and propose to generate package-specific SLSA provenance expectations on first
-use. Each such ‘trust on first use' (TOFU) policy contains expectations based on
+use. Each such 'trust on first use' (TOFU) policy contains expectations based on
 observed provenance, and can be used as a baseline to detect unexpected changes,
 for example a too low SLSA level, missing provenance, or an unexpected change in
 a 'sensitive' provenance property. A [proposed TOFU
