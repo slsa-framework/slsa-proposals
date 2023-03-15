@@ -213,7 +213,7 @@ solution is to qualify expectations for a package with a version range.
 -  With alternative 1,  different version number ranges correspond to
     different expected provenance values .
 -  With alternative 2, different version number ranges correspond to
-    different past ‘good' provenance instances.
+    different past 'good' provenance instances.
 
 #### Comparison of alternatives
 
