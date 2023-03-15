@@ -198,7 +198,7 @@ update the expected values.
 #### Alternative 2: Remember expected provenance instances
 
 Here, the policy evaluator will compare selected properties of a package's SLSA
-provenance against property values in past ‘good' provenance. When a ‘good'
+provenance against property values in past 'good' provenance. When a 'good'
 package's provenance causes an unexpected difference, remember the new ‘good'
 provenance instance. 
 
