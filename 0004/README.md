@@ -239,7 +239,7 @@ use. Each such ‘trust on first use' (TOFU) policy contains expectations based 
 observed provenance, and can be used as a baseline to detect unexpected changes,
 for example a too low SLSA level, missing provenance, or an unexpected change in
 a ‘sensitive' provenance property. A [proposed TOFU
-policy](#heading=h.56mzvgtcrr82) is presented below.
+policy](#a-proposed-tofu-policy-for-a-single-npm-package) is presented below.
 
 ### From local to centralized management
 
