@@ -273,7 +273,7 @@ Inputs:
 -  Package name and version.
 -  Optional: verified package provenance.
 -  Preferences. Examples include, but are not limited to:
-    -  Names of ‘sensitive' provenance properties that are not expected
+    -  Names of 'sensitive' provenance properties that are not expected
         to change such as builder ID or source repository,
     -  Minimum SLSA level for an acceptable artifact, 
     -  Maximum SLSA level depending on the builder. 
