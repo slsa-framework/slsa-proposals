@@ -153,7 +153,7 @@ dependents.
 
 #### Package provenance
 
--  [Npm RFC 626](https://github.com/npm/rfcs/pull/626) proposes to generate
+-  [npm RFC 626](https://github.com/npm/rfcs/pull/626) proposes to generate
     SLSA provenance attestations that will link an npm package to the source
     code that it was built from. The goal is SLSA level 3 for most packages.
 
