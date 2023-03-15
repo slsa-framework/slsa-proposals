@@ -296,7 +296,7 @@ If a policy already exists for this package:
 
 The following will require approval:
 
--  If a ‘good' package version does not satisfy expectations, add new
+-  If a 'good' package version does not satisfy expectations, add new
     expectations, qualified with a version pattern that matches this package
     version and onwards.
 
