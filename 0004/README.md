@@ -207,7 +207,7 @@ provenance instance.
 A package dependency graph may require that multiple versions of the same
 package will be installed. For this reason, when expectations need to be updated
 for a package at a new version x.y.z (e.g., new source repository), then that
-update must not invalidate previous ‘good' versions of that package. The
+update must not invalidate previous 'good' versions of that package. The
 solution is to qualify expectations for a package with a version range.
 
 -  With alternative 1,  different version number ranges correspond to
