@@ -96,7 +96,7 @@ protect against a tampered package in a distribution repository.
 
 The expectations cannot protect against 'upstream' compromises, for example the
 corruption of a build system, the exposure of a signing key, or a malicious
-commit to a source repository. 
+commit to an expected source repository. 
 
 ### Expectations when publishing a package to a registry
 
