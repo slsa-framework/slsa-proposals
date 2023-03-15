@@ -144,7 +144,7 @@ centrally.
 
 ## Background: npm 
 
-[Npm](https://www.npmjs.com/) is the package manager for Node.js software
+[npm](https://www.npmjs.com/) is the package manager for Node.js software
 packages. Of particular relevance for SLSA provenance policy evaluation are the
 _package provenance_, _package content_, and (after installing a package) the
 _package lock file_. We summarize main features and present some numbers based
