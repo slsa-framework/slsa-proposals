@@ -18,6 +18,12 @@ With few differences, the approach presented here is expected to generalize to
 other lock file-based software environments such as Go (go.mod and go.sum), PHP
 (composer.lock), Python (Pipfile.lock), and Ruby (Gemfile.lock).
 
+## Terminology
+
+*   A *provenance policy* associates a package name with expectations for the provenance attestation properties for a collection of package versions. 
+
+*   A package version *satisfies* a provenance policy iff its provenance attestation properties meet the policy expectations for the package name.
+
 ## Objectives
 
 Evaluate policies over SLSA provenance for npm software packages.
@@ -27,12 +33,6 @@ Non-objectives:
 -  Policies for what direct or indirect package dependencies (or dependency
     versions) to expect for an npm software package; policies for vulnerability
     scans.
-
-## Terminology
-
-*   A *provenance policy* associates a package name with expectations for the provenance attestation properties for a collection of package versions. 
-
-*   A package version *satisfies* a provenance policy iff its provenance attestation properties meet the policy expectations for the package name.
 
 ## Overview
 
