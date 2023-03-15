@@ -192,7 +192,7 @@ provenance? The difference is subtle.
 
 With this alternative, the policy evaluator will compare selected properties of
 a package's SLSA provenance against the expected property values for that
-package. When a ‘good' package's provenance causes an unexpected difference,
+package. When a 'good' package's provenance causes an unexpected difference,
 update the expected values.
 
 #### Alternative 2: Remember expected provenance instances
