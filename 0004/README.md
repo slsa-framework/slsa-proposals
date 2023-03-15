@@ -81,7 +81,7 @@ an unexpected repository or with an unexpected builder.
 
 If a ‘good' package version does not meet policy expectations, the expectations
 need to be updated for that package version and onwards, so that earlier package
-versions will continue to pass expectations (differnt dependencies may require
+versions will continue to pass expectations (different dependencies may require
 different versions of a package).
 
 These expectations cannot detect 'upstream' compromises, for example the
