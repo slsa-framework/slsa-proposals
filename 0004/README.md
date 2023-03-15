@@ -28,6 +28,12 @@ Non-objectives:
     versions) to expect for an npm software package; policies for vulnerability
     scans.
 
+## Terminology
+
+*   A *provenance policy* associates a package name with expectations for the provenance attestation properties for a collection of package versions. 
+
+*   A package version *satisfies* a provenance policy iff its provenance attestation properties meet the policy expectations for the package name.
+
 ## Overview
 
 Here, we highlight the main architecture elements, their roles, and limitations.
@@ -84,9 +90,13 @@ need to be updated for that package version and onwards, so that earlier package
 versions will continue to pass expectations (different dependencies may require
 different versions of a package).
 
-These expectations cannot detect 'upstream' compromises, for example the
+These expectations can only protect the parts of the software supply chain that
+follow after after a provenance attestation has been signed, for example, they can
+protect against a tampered package in a distribution repository. 
+
+The expectations cannot protect against 'upstream' compromises, for example the
 corruption of a build system, the exposure of a signing key, or a malicious
-change to a source repository. 
+commit to a source repository. 
 
 ### Expectations when publishing a package to a registry
 
