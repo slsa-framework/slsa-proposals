@@ -223,7 +223,7 @@ solution is to qualify expectations for a package with a version range.
     -  A configurable set of provenance properties that are not
         expected to change. This could be an organization-wide or even
         ecosystem-wide default setting.
-    -  The content of a ‘good' provenance instance. 
+    -  The content of a 'good' provenance instance. 
 
 I am inclined to prefer alternative 1, because it is more explicit about what
 provenance will or will not be compliant. Alternative 2 may be preferable if
