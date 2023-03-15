@@ -131,7 +131,7 @@ and propose to generate package-specific SLSA provenance expectations on first
 use. Each such ‘trust on first use' policy contains expectations based on
 observed provenance, and can be used as a baseline to detect unexpected changes,
 for example a too low SLSA level, missing provenance, or an unexpected change
-in a ‘sensitive' provenance property.
+in a 'sensitive' provenance property.
 
 We expect that provenance expectations will initially be managed locally where
 they are used: at the package developer, at the package registry, or at the
