@@ -331,7 +331,7 @@ The following will require approval:
 -  Besides package-specific code, an npm package contains a metadata file
     (package.json) with the name and version of the package itself, and
     optionally the names and allowed version ranges of direct dependencies.
--  See "[Npm background](#heading=h.napkqzk41aim)" for more.
+-  See "[Background: npm](#background-npm)" for more.
 
 ### Use case 2. Installing a package locally
 
@@ -340,11 +340,11 @@ dependencies. Despite differences in purpose, many are identical from a policy
 evaluation point of view:
 
 -  Installing all package dependencies of a project (Appendix
-    [A.1](#heading=h.vubk9ms4dtxh)).
+    [A.1](#a1-installing-dependencies-in-a-repository-clone-or-fork)).
 -  Adding a new package dependency to a project (Appendix
-    [A.2](#heading=h.vz2h8oar6gfd)).
+    [A.2](#a2-adding-a-dependency-or-installing-a-local-application)).
 -  Installing an npm application locally (Appendix
-    [A.2](#heading=h.vz2h8oar6gfd)).
+    [A.2](#a2-adding-a-dependency-or-installing-a-local-application)).
 
 We summarize those commonalities here. For details see the Appendix.
 
@@ -490,7 +490,7 @@ Description of the existing processes:
 #### New behavior
 
 -  None.
--  As described under "[Details](#heading=h.kxd90egoe9lz)" below, global
+-  As described under "[Existing process details](#existing-process-details-3)" below, global
     installs do not update a lock file (i.e. they record no concrete package
     versions, and no package digests). 
 -  We defer policies for installs without package digests in lock files to
