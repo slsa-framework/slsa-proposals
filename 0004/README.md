@@ -7,7 +7,7 @@
 
 This document describes a mechanism for labeling build platforms as officially
 SLSA conformant, the "SLSA Conformance Program." This proposal lays out the
-program at a high level, including a draft of the survey build platforms would
+program at a high level, including a draft of the survey that build platforms would
 need to fill out to participate. Please focus review on the program as a whole
 and the survey's general contents, reserving discussion of the survey's final
 wording for implementation PRs.
@@ -24,8 +24,8 @@ list of freeform questions a verifier might wish to ask of a build system, and
 the latter is a detailed procedure to be implemented in a tool. It is difficult
 and expensive to answer the question "is this build platform SLSA conformant?"  
 
-As a practical matter, the OpenSSF controls SLSA and could be in a position to
-determine which build platforms are SLSA conformant. However, the OpenSSF
+While the OpenSSF controls SLSA and could therefore be in a position to
+determine which build platforms are SLSA conformant, it
 doesn't have the desire or resources to do so. Furthermore, the SLSA
 specification makes it the verifier's responsibility to determine whether a
 build system is trustworthy, and that trustworthiness determines Build L3
