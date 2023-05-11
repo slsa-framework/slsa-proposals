@@ -20,9 +20,9 @@ other lock file-based software environments such as Go (go.mod and go.sum), PHP
 
 ## Terminology
 
-*   A *provenance policy* associates a package name with expectations for the provenance attestation properties for a collection of package versions. 
+*   A *provenance policy* associates a package name with expectations for the provenance attestation properties for a collection of package version ranges. Examples of expectations are the allowed builder IDs, allowed source repository and branch names, and allowed external builder inputs.
 
-*   A version of a package *satisfies* a provenance policy if its provenance attestation properties meet the policy expectations for the package name (and version range).
+*   A version of a package *satisfies* a provenance policy if its provenance attestation properties meet the policy expectations for the package name and applicable version range.
 
 ## Objectives
 
