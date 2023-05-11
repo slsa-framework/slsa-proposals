@@ -75,7 +75,7 @@ version:
         -  A policy evaluator may limit the maximum SLSA level
             depending on the builder identity or other context. 
 
-    -  The package was built from the repository
+    -  The package was built from the source repository
         [https://example.com/path/to/foo](https://example.com/path/to/foo).
 
 -  Other provenance claims may be relevant for specific use cases.
@@ -83,7 +83,7 @@ version:
 When enforced, these expectations will ensure that a compromise of a package
 registry upload credential (or a compromise of the registry itself) cannot
 result in the installation of a rogue ‘foo' package version that was built from
-an unexpected repository or with an unexpected builder. 
+an unexpected source repository or with an unexpected builder. 
 
 If a ‘good' package version does not meet policy expectations, the expectations
 need to be updated for that package version and onwards, so that earlier package
@@ -350,7 +350,7 @@ dependencies. Despite differences in purpose, many are identical from a policy
 evaluation point of view:
 
 -  Installing all package dependencies of a project (Appendix
-    [A.1](#a1-installing-dependencies-in-a-repository-clone-or-fork)).
+    [A.1](#a1-installing-dependencies-in-a-source-repository-clone-or-fork)).
 -  Adding a new package dependency to a project (Appendix
     [A.2](#a2-adding-a-dependency-or-installing-a-local-application)).
 -  Installing an npm application locally (Appendix
@@ -410,15 +410,15 @@ that it can block the installation of a non-compliant package.
 
 ## Appendix
 
-### A1. Installing dependencies in a repository clone or fork
+### A1. Installing dependencies in a source repository clone or fork
 
 ####  Existing process
 
 -  Many Node.js applications and libraries are developed using a
-    source-code repository that contains no code for dependencies.
--  After cloning or forking a repository, a user or developer runs "npm
+    source repository that contains no code for dependencies.
+-  After cloning or forking a source repository, a user or developer runs "npm
     install" (no additional arguments) to install all transitive dependencies
-    inside the repository clone or fork. 
+    inside the source repository clone or fork. 
 -  When a developer commits a code change, the source control system will
     ignore the code for dependencies. 
 
@@ -432,13 +432,13 @@ that it can block the installation of a non-compliant package.
 -  The policy applies to each installed package (listed in the lock file
     ./package-lock.json).
 -  This includes packages that are installed as a transitive dependency. 
--  The policy does not apply to the repository clone or fork itself, because
+-  The policy does not apply to the source repository clone or fork itself, because
     that code was not installed from an npm package.
 
 ####  Existing process details
 
--  Clone a repository for ‘foo' ("git clone –depth 1 https://site/foo"),
-    fork a repository, or use some other process to check out or unpack that
+-  Clone a source repository for ‘foo' ("git clone –depth 1 https://site/foo"),
+    fork a source repository, or use some other process to check out or unpack that
     source code.
 -  In the top-level directory for ‘foo', install transitive dependencies
     ("cd foo; npm install").
