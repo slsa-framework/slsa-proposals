@@ -20,7 +20,7 @@ other lock file-based software environments such as Go (go.mod and go.sum), PHP
 
 ## Terminology
 
-*   A *provenance policy* associates a package name with expectations for the provenance attestation properties for a collection of package version ranges. Examples of expectations are the allowed builder IDs, allowed source repository and branch names, and allowed external builder inputs.
+*   A *provenance policy* associates a package name with expectations for the provenance attestation properties for a collection of package version ranges. Examples of expectations are  builder IDs,  source repository and branch names, and  external builder inputs.
 
 *   A version of a package *satisfies* a provenance policy if its provenance attestation properties meet the policy expectations for the package name and applicable version range.
 
@@ -51,7 +51,7 @@ to installation, extended with two SLSA provenance policy evaluation points:
 -  When a software package is installed from a package registry.
 
 A SLSA provenance policy contains expectations for provenance, as discussed in later
-sections.
+sections (examples of expectations: builder ID, source repository, external builder inputs).
 
 SLSA Provenance expectations may be evaluated at other points inside or outside
 the above pipeline. Examples are a pre-build provenance check for build inputs,
@@ -73,10 +73,11 @@ version:
 -  The provenance contains claims that:
     -  Combined together satisfy the requirements for SLSA level X.
         -  A policy evaluator may limit the maximum SLSA level
-            depending on the builder identity or other context. 
+            depending on the builder identity or other context.
 
-    -  The package was built from the source repository
-        [https://example.com/path/to/foo](https://example.com/path/to/foo).
+    -  The package was built by builder ABC, from the source repository and branch
+        [https://example.com/path/to/foo:bar](https://example.com/path/to/foo:bar),
+        and with external build inputs XYZ.
 
 -  Out of scope: other provenance claims that may be relevant for specific use cases, such as local extensions for internal use.
 
