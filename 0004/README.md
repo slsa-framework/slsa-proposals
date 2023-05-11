@@ -22,7 +22,7 @@ other lock file-based software environments such as Go (go.mod and go.sum), PHP
 
 *   A *provenance policy* associates a package name with expectations for the provenance attestation properties for a collection of package versions. 
 
-*   A package version *satisfies* a provenance policy if its provenance attestation properties meet the policy expectations for the package name.
+*   A version of a package *satisfies* a provenance policy if its provenance attestation properties meet the policy expectations for the package name (and version range).
 
 ## Objectives
 
