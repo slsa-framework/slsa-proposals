@@ -78,7 +78,7 @@ version:
     -  The package was built from the source repository
         [https://example.com/path/to/foo](https://example.com/path/to/foo).
 
--  Other provenance claims may be relevant for specific use cases.
+-  Out of scope: other provenance claims that may be relevant for specific use cases, such as local extensions for internal use.
 
 When enforced, these expectations will ensure that a compromise of a package
 registry upload credential (or a compromise of the registry itself) cannot
