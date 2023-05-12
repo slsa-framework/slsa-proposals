@@ -34,6 +34,12 @@ Non-objectives:
     versions) to expect for an npm software package; policies for vulnerability
     scans.
 
+-  Policy distribution. The TOFU (trust on first use) approach described here supports
+    protyping policies and evaluators, and is not an alternative for secure management
+    and disttribution.
+
+-  Prescribe policy formats. The goal is to prototype policies and evaluators.
+
 ## Overview
 
 Here, we highlight the main architecture elements, their roles, and limitations.
