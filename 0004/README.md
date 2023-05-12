@@ -26,7 +26,9 @@ other lock file-based software environments such as Go (go.mod and go.sum), PHP
 
 ## Objectives
 
-Evaluate policies over SLSA provenance for npm software packages.
+-  Evaluate policies over SLSA provenance for npm software packages.
+
+-  Prototype policies and policy evaluation.
 
 Non-objectives:
 
@@ -38,7 +40,7 @@ Non-objectives:
     protyping policies and evaluators, and is not an alternative for secure management
     and distribution.
 
--  Prescribe policy formats. The goal is to prototype policies and evaluators.
+-  Prescribe policy formats. 
 
 ## Overview
 
