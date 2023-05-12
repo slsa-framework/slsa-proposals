@@ -36,7 +36,7 @@ Non-objectives:
 
 -  Policy distribution. The TOFU (trust on first use) approach described here supports
     protyping policies and evaluators, and is not an alternative for secure management
-    and disttribution.
+    and distribution.
 
 -  Prescribe policy formats. The goal is to prototype policies and evaluators.
 
