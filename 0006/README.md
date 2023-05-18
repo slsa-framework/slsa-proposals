@@ -206,6 +206,31 @@ Git branch is the way to manage versioned specifications.
     `/docs/github-actions-workflow/<version>.md`. All specification files in the
     same branch share the same version.
 
+#### Code Contribution
+
+Since the repo uses the Git submodule in a non-standard way and for easy
+building website purposes, people SHOULD NOT use submodules to commit any
+change.
+
+When a community member needs to make a contribution, they fork the repo (and
+clone it locally if they are familiar with git). If the change is for a
+versioned file (a.k.a. spec file), they should make the change in the version
+branch, and send a PR to the version branch. Meanwhile, if the change is for an
+unversioned file or the website itself, they should make the change in `main`,
+and send a PR to `main`.
+
+However, if the change comes from one of the repo owners, and it has to modify
+files in both `main` and version branches in one PR, we assume the owner
+understands the risk and knows how to send a proper code update with Submodule
+changes.
+
+#### Submodule Pointer
+
+A new change in a version branch makes the Submodule pointer in the `main`
+branch stale. A Github Workflow script may be created to automatically update
+the Submodule pointing to the latest commit, when the PR is merged. If desired,
+the repo owner can also manually launch the Github Workflow.
+
 ## Automate Building and Deploying The Website
 
 A shell script should assemble the website, instead of using any logic in the
@@ -222,69 +247,44 @@ Pages.
 -   The usage of Git submodule is non-standard, and it leaves some versioned
     directories in the `main` branch.
 
-*What is changing and code snapshot*
+*What is changing*
 
-The following is a snapshot of the scripts for building and deploying the
-website.
+-   To serve the website locally, instead of cloning the repo and going into
+    `/doc` in step 2 in
+    [/docs/README.md](https://github.com/slsa-framework/slsa/blob/main/docs/README.md),
+    the step 2 is updated to be:
 
--   To serve the website locally,
-    [/docs/README.md](https://github.com/slsa-framework/slsa/blob/main/docs/README.md)
-    is replaced with running `build.sh` or similar logic.
--   The Github Workflow uses the same shell script to prepare the build
-    environment.
+    ```bash
+    git clone --recurse-submodules https://github.com/chtiangg/slsa.git
+    git submodule update --remote
+    cd slsa/docs
+    ```
+-   A new Github Workflow script builds and deploys the website. The following
+    is a cod snapshot.
     
-```
-#!/bin/bash
-#
-# build.sh lives in .github/scripts. This script is preliminary and for
-# illustrative purposes. It may live in a repo other than slsa.
-# 
-# - By default, serves the SLSA website on your local machine.
-# - Using an argument, prepares the code environment without serving.
+    ```yaml
+    # deploy_website.yml lives in .github/workflows.
+    # This script is preliminary and for illustrative purposes.
 
-serve_website=${s:-"true"} # Gets value from the command argument.
-
-if [[ -d "slsa" ]]; then
-  rm -rf slsa
-fi
-
-sudo apt install ruby ruby-dev bundler
-git clone --recurse-submodules https://github.com/chtiangg/slsa.git
-cd slsa/docs
-git submodule update --remote
-bundle config set --local path 'vendor/bundle'
-bundle install
-
-if [[ "${serve_website}" == "true" ]]; then
-  echo "Start to serve the website..."
-  bundle exec jekyll serve --livereload --incremental
-else
-  echo "Finish setting up code and installing dependencies. Exit."
-fi
-
---------------------------------------------------------------------------
-
-# deploy_website.yml lives in .github/workflows.
-# This script is preliminary and for illustrative purposes. It may live in
-# a repo other than slsa.
-
-# ... Prepares the environment for Github Workflow
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: Run the setup script
-        run: ./.github/scripts/build.sh -s false
-        shell: bash
-      - name: Build the website
-        run: |
-          cd slsa/docs
-          JEKYLL_GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }} bundle exec jekyll build --incremental
-        env:
-          JEKYLL_ENV: production
-# ... Uploads to Github Page and Deploy to your own website.
-```
+    # ... Prepares the environment for Github Workflow
+    jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+        - name: Checkout
+            uses: actions/checkout@v3
+            with:
+                submodules: recursive
+        - name: Setup pages
+            uses: actions/configure-pages@v3
+        - name: Build
+            uses: actions/jekyll-build-pages@v1
+            with:
+                source: ./docs
+        - name: Upload artifacts
+            uses: actions/upload-pages-artifact@v1
+    # ... Deploy to your own website.
+    ```
 
 ### Alternatives considered: Build each branch separately, then assemble
 
