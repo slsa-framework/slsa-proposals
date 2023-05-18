@@ -249,10 +249,9 @@ Pages.
 
 *What is changing*
 
--   To serve the website locally, instead of cloning the repo and going into
-    `/doc` in step 2 in
-    [/docs/README.md](https://github.com/slsa-framework/slsa/blob/main/docs/README.md),
-    the step 2 is updated to be:
+-   To serve the website locally, step 2 in
+    [/docs/README.md](https://github.com/slsa-framework/slsa/blob/main/docs/README.md)
+    is updated to be:
 
     ```bash
     git clone --recurse-submodules https://github.com/chtiangg/slsa.git
