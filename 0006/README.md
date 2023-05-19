@@ -169,14 +169,13 @@ The directory structure of `main` stays the same as the repo has right now.
 *What is changing*
 
 -   `/docs/spec`, `/docs/provenance`, `/docs/verification_summary`, and
-    `/docs/github-actions-workflow` are removed from the main branch.
+    `/docs/github-actions-workflow` are removed from `main`.
 -   `/docs/v1.0` and `/docs/v0.1` are two Git subtrees that have the same
     content as [version branches](#version-branches). Using Git subtrees is to
     ensure a consistent user experience for the community, so that a contributor
     only needs to make changes in `main`.
--   When detecting a push in the versioned directories such as `/docs/v+/`, a
-    Github Workflow syncs the same change into the version branches. For
-    example:
+-   When detecting a push in the versioned directories, a Github Workflow syncs
+    the same change into the version branches. For example:
 
     ```yaml
     # sync_branch.yml lives in .github/workflows.
@@ -215,7 +214,7 @@ version branches are agnostic to community contributors.
     evaluates the request, and sets up the new version in the repo.
 -   If a change is desired in the prior or future version, the contributor
     should fork the repo, clone it locally if they are familiar with git, make
-    the change in the `main:docs/<version>` directory, and send a PR against
+    the change in the `main:docs/<version>` directories, and send a PR against
     `main`.
 
 ### Automate Building and Deploying The Website
@@ -226,7 +225,7 @@ Github Workflow.
 
 Meanwhile, there is no change for serving the website locally.
 [/docs/README.md](https://github.com/slsa-framework/slsa/blob/main/docs/README.md)
-is remain the same.
+remains the same.
 
 The following is a snapshot of the script:
 
@@ -256,21 +255,21 @@ jobs:
 
 -   An additional Github workflow is required to sync up the code between
     `main:docs/<version>` and version branches.
--   Although using Git subtrees is agnostic to community contributors, it add
+-   Although using Git subtrees is agnostic to community contributors, it adds
     more overhead and responsibility to the repo owners.
--   It leaves some versioned directories in the `main` branch.
+-   It leaves some versioned directories in `main`.
 
 ## Alternatives considered
 
 ### Use Github submodules
 
-Git branches is the way to manage versioned specifications. Versioned files of
+Git branches are the way to manage versioned specifications. Versioned files of
 each specification are stored in their own branch. Git submodules are created in
 `main:docs/<version>` and point to version branches. For example
 `main:docs/v1.0` points to `release/v1.0`, and `main:docs/v0.1` point points to
 `release/v0.1`.
 
-A GitHub Workflow clones the `main` branch once, pulls the latest files for all
+A GitHub Workflow clones `main` once, pulls the latest files for all
 the submodules, builds the website once, and deploys the website to Github
 Pages.
 
@@ -278,7 +277,7 @@ Pages.
 
 -   The usage of Git submodules is non-standard, and using submodules is
     error-prone and toilsome for both the repo owner and community contributors.
--   It leaves some versioned directories in the `main` branch.
+-   It leaves some versioned directories in `main`.
 
 *What is changing*
 
@@ -320,7 +319,7 @@ Pages.
 
 ### Build every version branch separately
 
-Git branches is the way to manage versioned specifications. Versioned files of
+Git branches are the way to manage versioned specifications. Versioned files of
 each specification are stored in their own branch. Additionally, every branch
 also contains a full set of style, template, and Jekyll related files. `main`
 contains unversioned files that are shared across versions.
@@ -338,7 +337,7 @@ website to GitHub Pages.
     each branch must have a full set of style, template, and Jekyll related
     files. It may also be an advantage, since we are able to deal with one
     branch at a time.
-    -   Building the `main` branch produces the unversioned files.
+    -   Building `main` produces the unversioned files.
     -   Building a version branch produces the versioned directory and files in
         it.
     -   However, using `baseurl: "/<version>" destination: "_site/<version>"` in
@@ -358,7 +357,7 @@ around 10~ markdown files.
 
 ### Alternatives Comparison
 
-|                   | Effort of assembling                                      | Effor of contribtion                                    | Effor of maintenance                                      | Versioned files in main
+|                   | Effort of assembling                                      | Effort of contribution                                  | Effort of maintenance                                     | Versioned files in main
 |:----------------- | :-------------------------------------------------------- | :------------------------------------------------------ | :-------------------------------------------------------- | :----------------------
 |Git Subtrees       | ![#](https://placehold.co/15x15/d9ead3/d9ead3.png) Low    | ![#](https://placehold.co/15x15/d9ead3/d9ead3.png) Low  | ![#](https://placehold.co/15x15/fff2cc/fff2cc.png) Medium | ![#](https://placehold.co/15x15/fff2cc/fff2cc.png) Yes
 |Git Submodules     | ![#](https://placehold.co/15x15/d9ead3/d9ead3.png) Low    | ![#](https://placehold.co/15x15/f4cccc/f4cccc.png) high | ![#](https://placehold.co/15x15/fff2cc/fff2cc.png) Medium | ![#](https://placehold.co/15x15/fff2cc/fff2cc.png) Yes
