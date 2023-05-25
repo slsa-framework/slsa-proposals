@@ -58,10 +58,112 @@ Out of scope:
 -   [out of scope] Make major updates to the content of any files in the repo,
     although fixing URLs with the proposed website structure is in scope.
 
-## Design Idea
+## The Repo Structure of slsa-framework/slsa
 
-NOTE: The examples in this section are preliminary and for illustrative
-purposes.
+The following sections are the new proposed structure, including branches, for
+the repo.
+
+### Example
+
+```
+slsa-framework/slsa:main
+├─ docs/
+│  ├─ _data/
+│  ├─ _includes/
+│  ├─ _layout/
+│  ├─ _posts/
+│  ├─ _sass/
+│  ├─ fonts/
+│  ├─ images/
+│  ├─ vendor/
+│  ├─ v0.1/    # a git subtree which has the same content as the branch `release/v0.1`
+│  ├─ v1.0/    # a git subtree which has the same content as the branch `release/v1.0`
+│  ├─ .ruby-version
+│  ├─ _config.yml
+│  ├─ Gemfile
+│  ├─ Gemfile.lock
+│  ├─ README.md
+│  └─ <other-unversioned-files>.md
+├─ .gitignore
+├─ LICENSE.md
+├─ README.md
+└─ ...
+
+# Files were formerly in main/docs/*/v1, such as:
+# `docs/spec/v1.0/*`,
+# `docs/provenance/v1/*`,
+# `docs/verification_summary/v1/*`
+slsa-framework/slsa:release/v1.0
+└─ <v1.0-versioned-files>.md
+└─ ...
+
+# Files were formerly in main/docs/*/v0.1, such as:
+# `docs/spec/v0.1/*`,
+# `docs/provenance/v0.1/*`,
+# `docs/verification_summary/v0.1/*`
+slsa-framework/slsa:release/v0.1
+└─ <v0.1-versioned-files>.md
+└─ ...
+```
+
+### Main Branch
+
+The directory structure of `main` stays the same as the repo has right now.
+
+*What is changing*
+
+-   `/docs/spec`, `/docs/provenance`, `/docs/verification_summary`, and
+    `/docs/github-actions-workflow` are removed from `main`.
+-   `/docs/v1.0` and `/docs/v0.1` are two Git subtrees that have the same
+    content as [version branches](#version-branches). Using Git subtrees is to
+    ensure a consistent user experience for the community, so that a contributor
+    only needs to make changes in `main`.
+-   When detecting a push in the versioned directories, a Github Workflow syncs
+    the same change into the version branches. For example:
+
+    ```yaml
+    # sync_branch.yml lives in .github/workflows.
+    on:
+      push:
+        branches: [ main ]
+        paths: [ docs/v+/ ]
+    ```
+
+-   Every permalink is updated to use the dir structure described in
+    [the website](#the-website) section.
+
+### Version Branches
+
+Every prior or future specification has a version branch.
+
+*What is changing*
+
+-   `release/<version|version-draft>` is the branch pattern for a prior or
+    future `version`, where the `version` must contain both major and minor.
+-   At the top level directory, a branch has all the versioned file from
+    `/docs/spec/<version>/*`, `/docs/provenance/<version>.md`,
+    `/docs/verification_summary/<version>.md`, and
+    `/docs/github-actions-workflow/<version>.md`. All specification files in the
+    same branch share the same version.
+    -   NOTE: a version branch and its mirror in the main branch may contain
+        files other than specification, such as images and protos.
+-   When a new version branch is created, the repo owner is responsible to
+    manage Git subtrees and other website configs for the branch in `main`.
+
+### Code Contribution
+
+The process should remain the same. Syncing Github subtrees and version branches
+are agnostic to community contributors.
+
+-   If a new version is desired, a contributor should raise the request either
+    in the SLSA weekly meeting or create an issue. The repo owner evaluates the
+    request, and sets up the new version in the repo.
+-   If a change is desired in the prior or future version, the contributor
+    should fork the repo, clone it locally if they are familiar with git, make
+    the change in the `main:docs/<version>` directories, and send a PR against
+    `main`.
+
+## Appendix
 
 ### The Website
 
@@ -76,13 +178,13 @@ _site/
 │  ├─ levels.html
 │  ├─ onepage.html
 │  ├─ requirement.html
-│  └─ ...               # other versioned specification files
+│  └─ ...               # other versioned files for v1.0
 ├─ v0.1/
 │  ├─ faq.html
 │  ├─ levels.html
 │  ├─ onepage.html
 │  ├─ requirement.html
-│  └─ ...               # other versioned specification files
+│  └─ ...               # other versioned files for v0.1
 ├─ assets/
 ├─ fonts/
 ├─ images/
@@ -119,104 +221,6 @@ _site/
 -   To build and deploy the website, use a Github Workflow in
     [the proposed build process](#automate-building-and-deploying-the-website).
 
-### The Repo
-
-#### Example
-
-```
-slsa-framework/slsa:main
-├─ docs/
-│  ├─ _data/
-│  ├─ _includes/
-│  ├─ _layout/
-│  ├─ _posts/
-│  ├─ _sass/
-│  ├─ fonts/
-│  ├─ images/
-│  ├─ vendor/
-│  ├─ v0.1/    # a git subtree which has the same content as the branch `release/v0.1`
-│  ├─ v1.0/    # a git subtree which has the same content as the branch `release/v1.0`
-│  ├─ .ruby-version
-│  ├─ _config.yml
-│  ├─ Gemfile
-│  ├─ Gemfile.lock
-│  ├─ README.md
-│  └─ <other-unversioned-files>.md
-├─ .gitignore
-├─ LICENSE.md
-├─ README.md
-└─ ...
-
-# Files were formerly in main/docs/*/v1, such as:
-# `docs/spec/v1.0/*`,
-# `docs/provenance/v1/*`,
-# `docs/verification_summary/v1/*`
-slsa-framework/slsa:release/v1.0
-└─ <v1.0-versioned-files>.md
-
-# Files were formerly in main/docs/*/v0.1, such as:
-# `docs/spec/v0.1/*`,
-# `docs/provenance/v0.1/*`,
-# `docs/verification_summary/v0.1/*`
-slsa-framework/slsa:release/v0.1
-└─ <v0.1-versioned-files>.md
-```
-
-#### Main Branch
-
-The directory structure of `main` stays the same as the repo has right now.
-
-*What is changing*
-
--   `/docs/spec`, `/docs/provenance`, `/docs/verification_summary`, and
-    `/docs/github-actions-workflow` are removed from `main`.
--   `/docs/v1.0` and `/docs/v0.1` are two Git subtrees that have the same
-    content as [version branches](#version-branches). Using Git subtrees is to
-    ensure a consistent user experience for the community, so that a contributor
-    only needs to make changes in `main`.
--   When detecting a push in the versioned directories, a Github Workflow syncs
-    the same change into the version branches. For example:
-
-    ```yaml
-    # sync_branch.yml lives in .github/workflows.
-    on:
-      push:
-        branches: [ main ]
-        paths: [ docs/v+/ ]
-    ```
-
--   Every permalink is updated to use the dir structure described in
-    [the website](#the-website) section.
-
-#### Version Branches
-
-Every prior or future specification has a version branch.
-
-*What is changing*
-
--   `release/<version|version-draft>` is the branch pattern for a prior or
-    future `version`, where the `version` must contain both major and minor.
--   At the top level directory, a branch has all the versioned file from
-    `/docs/spec/<version>/*`, `/docs/provenance/<version>.md`,
-    `/docs/verification_summary/<version>.md`, and
-    `/docs/github-actions-workflow/<version>.md`. All specification files in the
-    same branch share the same version.
--   When a new version branch is created, the repo owner is responsible to
-    manage Git subtrees and other website configs for the branch in `main`.
-
-#### Code Contribution
-
-The process should remain the same as it is for today. Github subtrees and
-version branches are agnostic to community contributors.
-
--   If a new version is desired, a contributor should raise the request either
-    in the SLSA weekly meeting or create an issue in the repo. The repo owner
-    evaluates the request, and sets up the new version in the repo.
--   If a change is desired in the prior or future version, the contributor
-    should fork the repo, clone it locally if they are familiar with git, make
-    the change in the `main:docs/<version>` directories, and send a PR against
-    `main`.
-
 ### Automate Building and Deploying The Website
 
 A new Github Workflow monitors the push and automates the building and
@@ -251,7 +255,11 @@ jobs:
 # ... Deploy to your own website.
 ```
 
-### Disadvantages
+### Disadvantages of The Proposed Mechanism
+
+With the proposed changes in the repo structure, the website, and Github
+workflow, a few disadvantages exist for the new way of restructuring the SLSA
+versioning system.
 
 -   An additional Github workflow is required to sync up the code between
     `main:docs/<version>` and version branches.
@@ -259,9 +267,10 @@ jobs:
     more overhead and responsibility to the repo owners.
 -   It leaves some versioned directories in `main`.
 
-## Alternatives considered
 
-### Use Github submodules
+### Alternatives considered
+
+#### Use Github submodules
 
 Git branches are the way to manage versioned specifications. Versioned files of
 each specification are stored in their own branch. Git submodules are created in
@@ -317,7 +326,7 @@ Pages.
     # ... Deploy to your own website.
     ```
 
-### Build every version branch separately
+#### Build every version branch separately
 
 Git branches are the way to manage versioned specifications. Versioned files of
 each specification are stored in their own branch. Additionally, every branch
@@ -355,7 +364,7 @@ Instead of using Git branches, create a separate repo to manage each SLSA
 version. On top of the disadvantages, this variant is an overkill to manage
 around 10~ markdown files.
 
-### Alternatives Comparison
+#### Alternatives Comparison
 
 |                   | Effort of assembling                                      | Effort of contribution                                  | Effort of maintenance                                     | Versioned files in main
 |:----------------- | :-------------------------------------------------------- | :------------------------------------------------------ | :-------------------------------------------------------- | :----------------------
