@@ -152,16 +152,23 @@ Every prior or future specification has a version branch.
 
 ### Code Contribution
 
-The process should remain the same. Syncing Github subtrees and version branches
-are agnostic to community contributors.
+The process should remain the same.  Contributors fork, clone, and submit PRs
+to the version directories in `main` just as they do today. Syncing Github
+subtrees and version branches should be transparent to community contributors.
 
--   If a new version is desired, a contributor should raise the request either
-    in the SLSA weekly meeting or create an issue. The repo owner evaluates the
-    request, and sets up the new version in the repo.
--   If a change is desired in the prior or future version, the contributor
-    should fork the repo, clone it locally if they are familiar with git, make
-    the change in the `main:docs/<version>` directories, and send a PR against
-    `main`.
+### Creating new versions
+
+When a new version is desired, a project maintainer can create a new branch as
+follows (using `v1.0` → `v1.1` as an example):
+
+```bash
+git branch release/v1.1 release/v1.0
+git checkout main
+git subtree add --prefix=docs/spec/v1.1 release/v1.1
+git push origin release/v1.1 main
+```
+
+The GitHub Actions workflow that syncs branches should automatically pick up the new version.
 
 ## Appendix
 
