@@ -126,7 +126,7 @@ The directory structure of `main` stays the same as the repo has right now.
     on:
       push:
         branches: [ main ]
-        paths: [ "docs/v[0-9.]+/**" ]
+        paths: [ docs/v+/ ]
     ```
 
 -   Every permalink is updated to use the dir structure described in
@@ -168,14 +168,11 @@ git push origin release/v1.1 main
 ```
 
 The GitHub Actions workflow that syncs branches should automatically pick up the
-new version, for example:
+new version, while commits are disallowed to `release/<version>`, for example:
 
 ```bash
 # If a change is committed into `main`, the workflow runs
-git subtree push --prefix=docs/v1.1 https://github.com/slsa-framework/slsa.git release/v1.1
-
-# if a change is committed into `release/v1.1`, the workflow runs
-git subtree pull --prefix=docs/v1.1 https://github.com/slsa-framework/slsa.git release/v1.1 --squash
+git subtree push --prefix docs/v1.1 https://github.com/slsa-framework/slsa.git release/v1.1
 ```
 
 ### Disadvantages
