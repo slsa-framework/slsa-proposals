@@ -222,15 +222,15 @@ a few disadvantages are introduced:
     branches is possible (with `git subtree merge`), and cutting a release only
     involves creating a new subtree.
 
-### Alternatives considered
+## Alternatives considered
 
-#### Use Github submodules
+### Use Github submodules
 
 Git branches are the way to manage the specification across versions.
 Specification files that share the same version are stored in their own branch.
 Git submodules are created in `main:docs/<version>` and point to version
 branches. For example `main:docs/v1.0` points to `release/v1.0`, and
-`main:docs/v0.1` point points to `release/v0.1`.
+`main:docs/v0.1` points to `release/v0.1`.
 
 A Github Actions workflow clones `main` once, pulls the latest files for all the
 submodules, builds the website once, and deploys the website to Github Pages.
@@ -280,7 +280,7 @@ submodules, builds the website once, and deploys the website to Github Pages.
     # ... Deploy to your own website.
     ```
 
-#### Build every version branch separately
+### Build every version branch separately
 
 Git branches are the way to manage the specification across versions.
 Specification files that share the same version are stored in their own branch.
@@ -319,7 +319,7 @@ Instead of using Git branches, create a separate repo to manage each SLSA
 version. On top of the disadvantages, this variant is an overkill to manage
 around 10~ markdown files.
 
-#### Alternatives Comparison
+### Alternatives Comparison
 
 |                   | Effort of assembling                                      | Effort of contribution                                  | Effort of maintenance                                     | Versioned files in main
 |----------------- | :-------------------------------------------------------- | :------------------------------------------------------ | :-------------------------------------------------------- | :----------------------
