@@ -163,12 +163,20 @@ follows (using `v1.0` → `v1.1` as an example):
 ```bash
 git branch release/v1.1 release/v1.0
 git checkout main
-git subtree add --prefix=docs/spec/v1.1 release/v1.1
+git subtree add --prefix=docs/v1.1 release/v1.1
 git push origin release/v1.1 main
 ```
 
 The GitHub Actions workflow that syncs branches should automatically pick up the
-new version.
+new version, for example:
+
+```bash
+# If a change is committed into `main`, the workflow runs
+git subtree push --prefix docs/v1.1 https://github.com/slsa-framework/slsa.git release/v1.1
+
+# if a change is committed into `release/v1.1`, the workflow runs
+git subtree pull --prefix docs/v1.1 https://github.com/slsa-framework/slsa.git release/v1.1 --squash
+```
 
 ### Disadvantages
 
