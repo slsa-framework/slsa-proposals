@@ -172,10 +172,10 @@ new version, for example:
 
 ```bash
 # If a change is committed into `main`, the workflow runs
-git subtree push --prefix docs/v1.1 https://github.com/slsa-framework/slsa.git release/v1.1
+git subtree push --prefix=docs/v1.1 https://github.com/slsa-framework/slsa.git release/v1.1
 
 # if a change is committed into `release/v1.1`, the workflow runs
-git subtree pull --prefix docs/v1.1 https://github.com/slsa-framework/slsa.git release/v1.1 --squash
+git subtree pull --prefix=docs/v1.1 https://github.com/slsa-framework/slsa.git release/v1.1 --squash
 ```
 
 ### Disadvantages
