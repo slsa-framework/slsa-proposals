@@ -2,7 +2,7 @@
 
 *   Proposer: [Tianyu Chen](https://github.com/chtiangg) (tianyuchen@google.com)
 *   GitHub Issue: [#742](https://github.com/slsa-framework/slsa/issues/742)
-*   Status: [DRAFT](../README.md#meaning-of-status-codes)
+*   Status: [ACCEPTED](../README.md#meaning-of-status-codes)
 *   Original link:
     [Google docs](https://docs.google.com/document/d/1sTo6Lccu5I5mEY8oemF964KbKQvdvUHcbVRdcCxK24w/edit?usp=sharing)
     (see that doc for reviewer comments)
@@ -126,7 +126,7 @@ The directory structure of `main` stays the same as the repo has right now.
     on:
       push:
         branches: [ main ]
-        paths: [ docs/v+/ ]
+        paths: [ "docs/v[0-9.]+/**" ]
     ```
 
 -   Every permalink is updated to use the dir structure described in
@@ -172,7 +172,7 @@ new version, while commits are disallowed to `release/<version>`, for example:
 
 ```bash
 # If a change is committed into `main`, the workflow runs
-git subtree push --prefix docs/v1.1 https://github.com/slsa-framework/slsa.git release/v1.1
+git subtree push --prefix=docs/v1.1 https://github.com/slsa-framework/slsa.git release/v1.1
 ```
 
 ### Disadvantages
