@@ -126,7 +126,7 @@ The directory structure of `main` stays the same as the repo has right now.
     on:
       push:
         branches: [ main ]
-        paths: [ docs/v+/ ]
+        paths: [ "docs/v[0-9.]+/**" ]
     ```
 
 -   Every permalink is updated to use the dir structure described in
