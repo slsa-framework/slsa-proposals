@@ -1,4 +1,4 @@
-# Proposal 4: SLSA Conformance Program
+# Proposal 5: SLSA Conformance Program
 * Proposers: [Kris K](https://github.com/kpk47) (kkris@google.com), [Joshua Mulliken](https://github.com/JoshuaMulliken) (jmullike@redhat.com)
 * GitHub issue: https://github.com/slsa-framework/slsa/issues/515
 * Status: [DRAFT](../README.md#meaning-of-status-codes)
@@ -110,6 +110,9 @@ The self-attestation tier requires that a build platform:
     potentially impact the integrity of the build platform. These disclosures
     must be displayed prominently on the build platform's website and released no
     more than thirty (30) days after resolution.
+-  Provide a reference implementation of verifying provenance produced by the
+    build platform, perhaps as a contribution to
+    [slsa-verifier](https://github.com/slsa-framework/slsa-verifier).
 -  Sign and follow the SLSA Conformance Program terms.
 
 The OpenSSF operates this tier through a community-maintained repository of
@@ -122,16 +125,16 @@ In order to participate in this tier, build platforms should
     1. Name of the build platform
     2. Build ID
     3. Desired SLSA level
-    4. List of URIs that resolve to evidence of SLSA conformance
-    5. List of URIs that resolve to materials for verifying provenance (e.g.
-    public keys)
-    6. List of URIs that resolve to the build platform's public
-        vulnerability disclosures
-
+    4. List of URIs that resolve to the self-reported evidence
+       - Evidence of SLSA conformance in both human- and machine-readable formats
+       - Cryptographic materials for verifying provenance (e.g. public keys,
+       sigstore metadata)
+       - Build platform's public vulnerability disclosures
+ 
 3. Complete the terms and conditions form.
 4. Send the PR for review.
 
-The community will review the PR and merge it when a quorum of maintainers
+The community will review the PR and merge it when at least two maintainers
 approve it. When reviewing the PR, the community will assume that the
 information in the evidence of conformance is truthful, and they will approve it if
 the described build platform meets the requirements for the desired SLSA levels.
@@ -157,7 +160,7 @@ Auditors can take part in the program by:
     3. A URI that resolves to the auditor's auditing procedure. 
 
 The community will review the PR and merge it once it has been approved by a
-quorum of maintainers. It is not yet clear what, if any, criteria will be used
+at least two maintainers. It is not yet clear what, if any, criteria will be used
 to evaluate auditors.   
 
 Once the PR is merged and the terms and signed, the OpenSSF grants the auditor a
@@ -179,6 +182,9 @@ The third-party audit tier requires that a build platform:
 -  Provide verifiers with any materials needed to verify provenance signed
     by the build system (e.g. public keys). Publishing these materials on a domain
     registered to the build system meets this requirement.
+-  Provide a reference implementation of verifying provenance produced by the
+    build platform, perhaps as a contribution to
+    [slsa-verifier](https://github.com/slsa-framework/slsa-verifier).
 -  Publish vulnerability disclosures for all security incidents that
     potentially impact the integrity of the build platform. These disclosures
     must be displayed prominently on the build platform's website and released no
@@ -198,21 +204,38 @@ build platform. The procedure is:
     1. Build platform name
     2. Attested SLSA levels
     3. URI that resolves to the public audit report
-    4. List of URIs that resolve to the build platform's
-        public vulnerability disclosures
+    4. List of URIs that resolve to public evidence
+       - (Optional) Public evidence of SLSA conformance
+       - (Optional) Cryptographic materials for verifying provenance (e.g.
+       public keys, sigstore metadata)
+       - Build platform's public vulnerability disclosures
     5. (Optional) Build ID
-    6. (Optional) List of URIs that resolve to materials for verifying
-        provenance (e.g. public keys)
 3. The build platform completes the terms and conditions form.
 
 The maintainers will review the PR and merge it after confirming the auditor is
-a registered participant in the program..
+a registered participant in the program.
 
 Once the PR is merged and the terms are signed, the OpenSSF grants the build
 platform a limited license to use the SLSA logo on its website and other
 promotional materials. Should the build platform fail to adhere to the program's
 terms or meet its requirements, the OpenSSF will revoke that license and, if
 necessary, enforce its trademarks. 
+
+## Potential future work
+
+### Conformance attestations
+
+The SLSA community could create a new attestation (perhaps an in-toto predicate)
+that indicates the issuing party attests that the named build platform meets the
+included SLSA level(s). The build platform would optionally provide one or more
+of these attestations when producing provenance, and the consumer would use
+these attestations as part of their decision of whether or not to use an
+artifact.
+
+This idea is not part of the initial proposal because pursuing it would require
+integrating with a policy engine that is more general than slsa-verifier (or
+other SLSA verification tools). The community can easily add these attestations
+later should there be sufficient demand.
 
 ## Alternatives considered
 
@@ -233,8 +256,10 @@ interpreted by humans, this option would capture the state of the build platform
 in an attestation and attach it to all provenance produced by the build
 platform. We discarded this option because it would violate SLSA's guiding
 principle of trusting systems by moving conformance checks into provenance
-verification. It would also bloat the provenance size and require introducing
-new, complicated logic in the provenance verifier.
+verification. While nothing in this proposal is intended to discourage build
+platforms from sharing attestations about their state or configuration, 
+evaluating or applying a policy to those attestations is not sufficient to
+ensure a build platform meets the requirements for SLSA's higher build levels.
 
 ## Appendix A: Conformance questionnaire
 
