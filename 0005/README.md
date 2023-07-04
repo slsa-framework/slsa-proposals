@@ -229,9 +229,10 @@ necessary, enforce its trademarks.
 The SLSA community could create a new attestation (perhaps an in-toto predicate)
 that indicates the issuing party attests that the named build platform meets the
 included SLSA level(s). The build platform would optionally provide one or more
-of these attestations when producing provenance, and the consumer would use
-these attestations as part of their decision of whether or not to use an
-artifact.
+of these attestations when producing provenance, and an auditor could produce
+one or more of these attestations when they have audited a build platform.
+Consumers would then use these attestations as part of their decision of
+whether or not to use an artifact.
 
 This idea is not part of the initial proposal because pursuing it would require
 integrating with a policy engine that is more general than slsa-verifier (or
