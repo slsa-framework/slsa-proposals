@@ -117,8 +117,9 @@ The self-attestation tier requires that a build platform:
 
 The OpenSSF operates this tier through a community-maintained repository of
 build platforms. The maintainers of this repository will be drawn from members
-of the SLSA community who are spread across the industry.  
-In order to participate in this tier, build platforms should 
+of the SLSA community who are spread across the industry.
+
+In order to participate in this tier, build platforms should:
 
 1. Learn about the SLSA Specification and its requirements.
 2. Create a PR for the repository containing
@@ -159,7 +160,7 @@ Auditors can take part in the program by:
     2. Auditor's website
     3. A URI that resolves to the auditor's auditing procedure. 
 
-The community will review the PR and merge it once it has been approved by a
+The community will review the PR and merge it once it has been approved by
 at least two maintainers. It is not yet clear what, if any, criteria will be used
 to evaluate auditors.   
 
