@@ -200,25 +200,26 @@ necessary, enforce its trademarks.
 
 ### Auditor participation
 
+Auditors participate only in the stronger third-party audit tier.
 Auditors can take part in the program by:
 
 1. Registering their intent with the OpenSSF.
-2. Performing any training and/or certification required by the OpenSSF (TBD)
+2. Performing any training and/or certification required by the OpenSSF (TBD).
 3. Completing the terms and conditions form.
-4. Opening a PR against the auditor repository containing 
+4. Opening a PR against the community-maintained auditor repository containing:
     1. Name of the auditor
     2. Auditor's website
-    3. A URI that resolves to the auditor's auditing procedure. 
+    3. A URI that resolves to the auditor's auditing procedure.
 
 The community will review the PR and merge it once it has been approved by
 at least two maintainers. It is not yet clear what, if any, criteria will be used
-to evaluate auditors.   
+to evaluate auditors.
 
 Once the PR is merged and the terms and signed, the OpenSSF grants the auditor a
 license to use the SLSA logo on its website and promotional materials. The
 OpenSSF reserves the right to revoke the license if the auditor fails to
 publicize audit reports,  performs insufficiently thorough audits, or otherwise
-acts against the SLSA Community's interests.  
+acts against the SLSA Community's interests.
 
 ## Potential future work
 
