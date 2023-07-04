@@ -14,7 +14,7 @@ Number                 | Title                                          | [Statu
 ---------------------- | -----------------------------------------------| -----------
 [0001](0001/README.md) | Creation of proposal process                   | IMPLEMENTED
 [0002](0002/README.md) | Project roadmap, May 2022                      | ACCEPTED
-[0003](0003/README.md) | SLSA v1.0 proposal                             | ACCEPTED
+[0003](0003/README.md) | SLSA v1.0 proposal                             | IMPLEMENTED
 [0004](0004/README.md) | Policy Architecture for Npm Package Provenance | DRAFT
 [0005](0005/README.md) | Conformance Program proposal                   | DRAFT
 [0006](0006/README.md) | Restructure the Versioning System for SLSA     | ACCEPTED
