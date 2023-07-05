@@ -2,8 +2,9 @@
 
 *   Proposer: [Mark Lodato](https://github.com/MarkLodato) (lodato@google.com)
 *   GitHub Issue: [#497](https://github.com/slsa-framework/slsa/issues/497)
-*   Status: [ACCEPTED](../README.md#meaning-of-status-codes)
+*   Status: [IMPLEMENTED](../README.md#meaning-of-status-codes)
 *   Original link: [Google docs](https://docs.google.com/document/d/13i2f-1SPogsuOCRDBFqQVRx0ieMBc7B-XxHsST-tx5c/r/0-PRIrYGqLqLfqzEmx2eQ5_Q/edit) (see that doc for reviewer comments and rejected ideas)
+*   Implementation: [SLSA v1.0](https://slsa.dev/spec/v1.0/)
 
 ## Abstract
 
