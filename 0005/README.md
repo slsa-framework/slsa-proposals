@@ -117,8 +117,9 @@ The self-attestation tier requires that a build platform:
 
 The OpenSSF operates this tier through a community-maintained repository of
 build platforms. The maintainers of this repository will be drawn from members
-of the SLSA community who are spread across the industry.  
-In order to participate in this tier, build platforms should 
+of the SLSA community who are spread across the industry.
+
+In order to participate in this tier, build platforms should:
 
 1. Learn about the SLSA Specification and its requirements.
 2. Create a PR for the repository containing
@@ -146,30 +147,6 @@ terms or meet its requirements, the OpenSSF will revoke that license and, if
 necessary, enforce its trademarks. 
 
 #### Tier two: Third-party audit
-
-### Auditor participation
-
-Auditors can take part in the program by:
-
-1. Registering their intent with the OpenSSF.
-2. Performing any training and/or certification required by the OpenSSF (TBD)
-3. Completing the terms and conditions form.
-4. Opening a PR against the auditor repository containing 
-    1. Name of the auditor
-    2. Auditor's website
-    3. A URI that resolves to the auditor's auditing procedure. 
-
-The community will review the PR and merge it once it has been approved by a
-at least two maintainers. It is not yet clear what, if any, criteria will be used
-to evaluate auditors.   
-
-Once the PR is merged and the terms and signed, the OpenSSF grants the auditor a
-license to use the SLSA logo on its website and promotional materials. The
-OpenSSF reserves the right to revoke the license if the auditor fails to
-publicize audit reports,  performs insufficiently thorough audits, or otherwise
-acts against the SLSA Community's interests.  
-
-### Build platform participation
 
 The third-party audit tier requires that a build platform:
 
@@ -219,7 +196,30 @@ Once the PR is merged and the terms are signed, the OpenSSF grants the build
 platform a limited license to use the SLSA logo on its website and other
 promotional materials. Should the build platform fail to adhere to the program's
 terms or meet its requirements, the OpenSSF will revoke that license and, if
-necessary, enforce its trademarks. 
+necessary, enforce its trademarks.
+
+### Auditor participation
+
+Auditors participate only in the stronger third-party audit tier.
+Auditors can take part in the program by:
+
+1. Registering their intent with the OpenSSF.
+2. Performing any training and/or certification required by the OpenSSF (TBD).
+3. Completing the terms and conditions form.
+4. Opening a PR against the community-maintained auditor repository containing:
+    1. Name of the auditor
+    2. Auditor's website
+    3. A URI that resolves to the auditor's auditing procedure.
+
+The community will review the PR and merge it once it has been approved by
+at least two maintainers. It is not yet clear what, if any, criteria will be used
+to evaluate auditors.
+
+Once the PR is merged and the terms and signed, the OpenSSF grants the auditor a
+license to use the SLSA logo on its website and promotional materials. The
+OpenSSF reserves the right to revoke the license if the auditor fails to
+publicize audit reports,  performs insufficiently thorough audits, or otherwise
+acts against the SLSA Community's interests.
 
 ## Potential future work
 
@@ -228,9 +228,10 @@ necessary, enforce its trademarks.
 The SLSA community could create a new attestation (perhaps an in-toto predicate)
 that indicates the issuing party attests that the named build platform meets the
 included SLSA level(s). The build platform would optionally provide one or more
-of these attestations when producing provenance, and the consumer would use
-these attestations as part of their decision of whether or not to use an
-artifact.
+of these attestations when producing provenance, and an auditor could produce
+one or more of these attestations when they have audited a build platform.
+Consumers would then use these attestations as part of their decision of
+whether or not to use an artifact.
 
 This idea is not part of the initial proposal because pursuing it would require
 integrating with a policy engine that is more general than slsa-verifier (or
