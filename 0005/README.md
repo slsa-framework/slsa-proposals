@@ -1,5 +1,5 @@
 # Proposal 5: SLSA Conformance Program
-* Proposers: [Kris K](https://github.com/kpk47) (kkris@google.com), [Joshua Mulliken](https://github.com/JoshuaMulliken) (jmullike@redhat.com)
+* Proposers: [Kris K](https://github.com/kpk47) (kkris@google.com), [Katie Mulliken](https://github.com/SecKatie) (mulliken@redhat.com)
 * GitHub issue: https://github.com/slsa-framework/slsa/issues/515
 * Status: [DRAFT](../README.md#meaning-of-status-codes)
 
