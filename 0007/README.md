@@ -17,7 +17,7 @@ contributors.
 
 ## Problem statement
 
-The original SLSA Steering Committee has passed its two year term and, per
+The original SLSA Steering Committee (SC) has passed its two year term and, per
 [current governance documents][current terms], must now select the next group
 of Steering Committee members. This gives us a natural point for reflection on
 the role and operation of the Steering Committee. Several project contributors
@@ -76,6 +76,8 @@ duties for each role.
     submitting a brief (1-2 paragraph) application consisting of:
     *   **Evidence** of performing some of the role's duties over the recent
         past.
+        *   For SC Member applications, this should include evidence of being
+            well-versed in SLSA.
     *   **Statement of intent** to continue performing duties over the next
         year.
     *   **Affiliation** / employer.
@@ -123,11 +125,10 @@ duties for each role.
     project strategy, and serve as an escalation point in the event of a
     disagreement.
     *   These duties are much less frequent than those of a Maintainer.
-    *   We generally **expect an SC Member to also be a Core Maintainer**, or a
-        Subproject Maintainer for a critical subproject, in order to ensure
-        that SC Members are well versed in the project.
-    *   Some Core Maintainers might not be SC Members. This may be a stepping
-        stone to becoming an SC Member.
+    *   We **expect an SC Member to be well versed in the project**. This often
+        means that SC Members are also Core Maintainers, or maintainers of a
+        subproject, but this is not required.
+    *   Some Core Maintainers might not be SC Members.
     *   The SC, as a group, are responsible for maintaining the relationship
         with the SCI WG, which includes:
         *   Facilitating input from SCI WG into SLSA during significant 
