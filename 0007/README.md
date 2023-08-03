@@ -3,7 +3,7 @@
 *   Proposer: [Joshua Lock](https://github.com/joshuagl)
     (joshuagloe@gmail.com on behalf of joshua.lock@uk.verizon.com),
     [Mark Lodato](https://github.com/MarkLodato) (lodato@google.com)
-*   GitHub Issue: N/A
+*   GitHub Issue: [#937](https://github.com/slsa-framework/slsa/issues/937)
 *   Status: [DRAFT](../README.md#meaning-of-status-codes)
 *   Original link:
     [Google docs](https://docs.google.com/document/d/1DBB-ziaM0yHyL1DDw1my-qs7tgKxluK25EIYTQltcgY/edit?usp=sharing)
