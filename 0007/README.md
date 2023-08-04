@@ -178,6 +178,8 @@ GitHub organisation:
 *   Change the org member base permissions to “No permissions” (from “Admin”)
     and check that everyone still has necessary access
 *   Purge unnecessary permissions in the org and in each repo
+	*	Purging of unnecessary permissions should happen on a regular cadence. At minimum
+		after each SC Member nomination cycle.
 
 ### Other clarifications
 
