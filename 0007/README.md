@@ -131,11 +131,13 @@ duties for each role.
     *   Some Core Maintainers might not be SC Members.
     *   The SC, as a group, are responsible for maintaining the relationship
         with the SCI WG, which includes:
-        *   Facilitating input from SCI WG into SLSA during significant 
-            developments, including: adding tracks and establishing roadmaps
-        *   Periodically reporting progress and developments to SCI WG 
+        *   Facilitating input from SCI WG into SLSA during significant
+            developments, including: adding tracks and establishing roadmaps.
+        *   Periodically reporting progress and developments to SCI WG.
+        *   Sharing relevant information from the SCI WG with the SLSA community.
     *   As community leaders, SC Members are also responsible for maintaining
         the slsa-framework/governance repository.
+    *	SC Members share updates on their activities in the Community Meeting.
 
 ### Clarify GitHub roles and how they maps to project roles
 
