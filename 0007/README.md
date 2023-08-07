@@ -29,10 +29,10 @@ SLSA’s parent [Supply Chain Integrity Working Group (SCI WG)][SCI WG].
 ### Historical context
 
 The SLSA Steering Committee was formed during the early days of both SLSA and
-the OSSF to provide a diverse set of inputs and oversight to the specification.
-Since the committee's original formation, the OpenSSF has developed more
-[structure][OSSF structure] and [processes][OSSF processes] which could
-support the SLSA project.
+the OpenSSF to provide a diverse set of inputs and oversight to the
+specification. Since the committee's original formation, the OpenSSF has
+developed more [structure][OpenSSF structure] and
+[processes][OpenSSF processes] which could support the SLSA project.
 
 ## Prior art
 
@@ -55,8 +55,8 @@ numerous [other models] within the CNCF.
     cannot unduly influence the project.
 *   Lower cost of operations for SLSA governance. The SLSA organization is
     small, so a heavyweight process is not worth the effort. In addition, SLSA
-    can lean on the [established organizational support][OSSF structure] in the
-    OpenSSF if needed.
+    can lean on the [established organizational support][OpenSSF structure] in
+    the OpenSSF if needed.
 
 
 ## Proposed solution
@@ -217,8 +217,8 @@ GitHub organisation:
 [current terms]: https://github.com/slsa-framework/governance/blob/4faa482e1040bf71df73e4a7efa0eda9eeb646a1/5._Governance.md?plain=1#L42
 [custom notification routing]: https://github.com/settings/notifications/custom_routing
 [Kubernetes Steering Council]: https://github.com/kubernetes/steering/blob/main/charter.md
-[OSSF structure]: https://github.com/ossf/tac/blob/main/organizational-structure-overview.md
-[OSSF processes]: https://github.com/ossf/tac/tree/main/process
+[OpenSSF structure]: https://github.com/ossf/tac/blob/main/organizational-structure-overview.md
+[OpenSSF processes]: https://github.com/ossf/tac/tree/main/process
 [other models]: https://contribute.cncf.io/maintainers/governance/leadership-selection/
 [SCI WG]: https://github.com/ossf/wg-supply-chain-integrity/
 [SLSA Steering Committee]: https://github.com/slsa-framework/governance/blob/4faa482e1040bf71df73e4a7efa0eda9eeb646a1/5._Governance.md?plain=1#L17
