@@ -198,18 +198,17 @@ GitHub organisation:
 *   Status quo
     *   see [goals]
 *   Dissolve the SLSA Steering Committee in favor of steering from the SCI WG
+    *   Pro: simplified governance structure.
     *   Con: Strategy may be driven by those without deep familiarity with
         the project.
     *   Con: SLSA community may not feel an appropriate sense of ownership and
         autonomy.
 *   Merge the Core Maintainer and Steering Committee Member roles
-    *   Pro: simplified structure
-        *   Counterpoint: the simplification does not result in too significant
-            a savings
+    *   Pro: simplified structure.
     *   Con: prevents us from having Core Maintainers who are not SC Members or
-        vice versa, which may be desirable
+        vice versa, which may be desirable.
     *   Con: technically the two roles are distinct, even if the same
-        individuals have typically performed them
+        individuals have typically performed them.
 
 <!-- References -->
 
