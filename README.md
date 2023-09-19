@@ -18,8 +18,8 @@ Number                 | Title                                          | [Statu
 [0004](0004/README.md) | Policy Architecture for Npm Package Provenance | DRAFT
 [0005](0005/README.md) | Conformance Program proposal                   | DRAFT
 [0006](0006/README.md) | Restructure the Versioning System for SLSA     | ACCEPTED
+[0007](0007/README.md) | Steering Commitee application, terms, and role | DRAFT
 [0008](0008/README.md) | Common CI/CD buildType                         | DRAFT
-
 
 ## How to create a proposal document
 
