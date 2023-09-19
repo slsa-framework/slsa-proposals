@@ -192,6 +192,8 @@ GitHub organisation:
 *   Add requirement to publish minutes for every SC meeting.
 *   State explicitly that SLSA lives within and takes broad direction from the
     OpenSSF SCI WG.
+*   Document a tie-breaking method for SC votes, should they be deadlocked, i.e
+    when the SC has an even number of members.
 
 ## Alternatives considered
 
