@@ -1,7 +1,13 @@
 # Proposal 5: SLSA Conformance Program
 * Proposers: [Kris K](https://github.com/kpk47) (kkris@google.com), [Katie Mulliken](https://github.com/SecKatie) (mulliken@redhat.com)
 * GitHub issue: https://github.com/slsa-framework/slsa/issues/515
-* Status: [DRAFT](../README.md#meaning-of-status-codes)
+* Status: [ABANDONED](../README.md#meaning-of-status-codes)
+
+## Update 25 Jan 2024
+
+This proposal has been abandoned as infeasible due to the high subjectivity
+of the Build Track's requirements. It may be revived in the future in conjuction
+with changes to the Build Track and/or the creation of an Operations Track.
 
 ## Abstract
 
